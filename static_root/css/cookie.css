@@ -1,0 +1,71 @@
+.ok-accept-cookie {
+    padding: 10px 20px;
+    background-color: black;
+    /* 设置左边按钮底色 */
+    color: white;
+    /* 设置文字颜色 */
+    width: 186px;
+    font-size: 14px;
+    /* 设置字号 */
+    margin-right: 10px;
+    /* 右边按钮之间的间距，最后一个按钮可以通过 :last-child 选择器移除 */
+    border-color: #000;
+    height: 51px;
+    cursor: pointer;
+    /* 鼠标悬停时显示为小手 */
+    border: 2px solid #000;
+    border-radius: 10px;
+    /* 设置圆角 */
+    text-align: center;
+    font-family: Poppins;
+}
+
+.ok-accept-cookie:hover {
+    background-color: #ff9922;
+    border: 2px solid #ff9922;
+}
+
+.ok-cookielearn-more {
+    padding: 10px 20px;
+    font-size: 14px;
+    /* 设置字号 */
+    background-color: transparent;
+    /* 设置右边按钮底色为透明 */
+    color: black;
+    /* 设置文字颜色 */
+    width: 186px;
+    font-size: 14px;
+    /* 设置字号 */
+    margin-right: 10px;
+    /* 右边按钮之间的间距，最后一个按钮可以通过 :last-child 选择器移除 */
+    border-color: #000;
+    height: 51px;
+    cursor: pointer;
+    /* 鼠标悬停时显示为小手 */
+    border: 2px solid #000;
+    border-radius: 10px;
+    /* 设置圆角 */
+    text-align: center;
+    font-family: Poppins;
+}
+
+.ok-cookielearn-more:hover {
+    background-color: #ff9922;
+    border: 2px solid #ff9922;
+}
+
+.ok-cookie-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 999;
+    padding-left: 2%;
+}

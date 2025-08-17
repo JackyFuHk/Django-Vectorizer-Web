@@ -1,0 +1,348 @@
+.ok-breadcrumb {
+    margin-left: 20px;
+    font-weight: 400;
+    list-style-type: none;
+    padding: 5px 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.ok-details-all-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ok-details-main-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.ok-details-left,
+.ok-details-right {
+    flex: 1;
+    /* 左右两边各占50%的宽度 */
+    height: auto;
+    /* 初始高度设置为auto，但左边将被覆盖 */
+}
+
+.ok-details-left {
+    background-color: #F4F0ED;
+    /* 左边背景色 */
+    height: 1000px;
+    /* 左边固定高度 */
+}
+
+.ok-details-right {
+    background-color: #F4F0ED;
+    /* 右边背景色 */
+    height: auto;
+    /* 右边高度自动调整，无需显式设置 */
+    overflow-y: auto;
+    /* 如果需要，可以添加垂直滚动条支持 */
+}
+
+.ok-details-images {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ok-details-main-image {
+    width: 600px;
+    height: 600px;
+    border-radius: 15px;
+    object-fit: cover;
+    display: block;
+}
+
+.ok-details-gallery {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.ok-gallery {
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.ok-gallery.active,
+.ok-gallery:active {
+    border: 1px solid rgb(255, 153, 34);
+    box-shadow: 0 0 1px 1px rgba(255, 153, 32, 0.3);
+}
+
+.ok-arrow-left,
+.ok-arrow-right {
+    font-size: 48px;
+    /* 设置字体大小，根据需要调整 */
+    color: black;
+    /* 设置字体颜色为白色 */
+    font-weight: bold;
+    /* 可选：使字体加粗，增加可见性 */
+    /* 如果你想要箭头之间有一定的间距，可以添加margin或padding */
+    margin: 0 10px;
+    /* 示例：左右两边各添加10px的外边距 */
+    cursor: pointer;
+}
+
+.ok-details-title {
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Poppins;
+}
+
+.ok-productlist-tag {
+    border-radius: 20px;
+    margin: 5px;
+    background-color: #afafaf;
+    padding: 5px 10px 5px 10px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: inline;
+}
+
+.ok-productlist-price {
+    font-weight: 400;
+    display: flex;
+}
+
+
+.price-moq {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px;
+    width: 100%;
+    align-content: center;
+}
+
+.ok-details-short-description {
+    padding: 10px;
+}
+
+.zoom-container {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    object-fit: cover;
+    width: 600px;
+    height: 600px;
+}
+
+.zoom-container img {
+    display: block;
+    width: 100%;
+    transition: transform 0.2s;
+    transform-origin: center center;
+}
+
+.ok-variation-size {
+    border-radius: 20px;
+    margin: 5px;
+    background-color: #fff;
+    padding: 5px 10px 5px 10px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: inline;
+}
+
+.ok-details-tiered-price-table {
+    padding: 10px;
+    width: 60%;
+    /* 或者指定具体的宽度 */
+    border-collapse: collapse;
+    /* 边框合并 */
+    margin: 20px 0;
+    /* 上下外边距 */
+    border-collapse: collapse;
+    /* 合并边框 */
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+
+}
+
+/* 表格头部样式 */
+.ok-details-tiered-price-table th {
+    background-color: #a0a0a0;
+    /* 背景色 */
+    color: #333;
+    /* 文字颜色 */
+    padding: 10px;
+    /* 内边距 */
+    text-align: left;
+    /* 文本对齐方式 */
+    border: 1px solid #ddd;
+    /* 边框样式 */
+    cursor: pointer;
+    padding: 10px;
+    color: #333;
+    border: none;
+}
+
+/* 表格体部样式 */
+.ok-details-tiered-price-table td {
+    padding: 10px;
+    /* 内边距 */
+    border: 1px solid #ddd;
+    /* 边框样式 */
+    text-align: left;
+    /* 文本对齐方式，这里设置为右对齐，适合价格显示 */
+    border: none;
+}
+
+
+/* 鼠标悬停时行变色（可选） */
+.ok-details-tiered-price-table tr:hover {
+    background-color: #f9f9f9;
+    /* 背景色 */
+
+}
+
+.ok-details-tiered-price-table tr.selected {
+    background-color: orange;
+    color: white;
+}
+
+
+.ok-add-to-cart {
+    background-color: #ff9922;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-left: auto;
+    width: 60%;
+}
+
+.ok-add-to-cart:hover {
+    background-color: black;
+}
+
+
+
+/* 将div设置为内联块级元素，以便它可以与其他元素并排显示 */
+#ok-save-money {
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    width: auto;
+    margin-left: auto;
+}
+
+#ok-total-price {
+    font-size: 40px;
+}
+
+.countdown-container {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: auto;
+}
+
+.countdown span {
+    font-size: 3rem;
+    margin: 0 10px;
+    color: #333;
+}
+
+
+
+.ok-need-help {
+    border: 1px solid #afafaf;
+    border-radius: 15px;
+    width: 60%;
+    /* 你可以根据需要调整这个宽度 */
+    display: block;
+    /* 使用Flexbox来确保内容（文字）靠左对齐 */
+    align-items: center;
+    /* 如果需要垂直居中内容（如多行文本或图标+文本），则保留此属性 */
+    justify-content: flex-start;
+    /* 确保内容（文字）靠左对齐 */
+    /* margin-top: 10px; 移除这个，因为父元素已经负责居中了 */
+    /* 如果需要内边距，可以添加padding属性 */
+    padding: 10px;
+    /* 例如，给一些内边距 */
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.ok-need-help:hover {
+    border: 1px solid #ff9922;
+}
+
+.gray-line {
+    height: 2px;
+    background: linear-gradient(to right, rgba(128, 128, 128, 0) 0%, rgba(128, 128, 128, 1) 50%, rgba(128, 128, 128, 0) 100%);
+    width: 100%;
+    margin: 20px 0;
+}
+
+.long-infomation,
+.detail-table {
+    flex: 1;
+}
+
+.long-infomation {
+    background-color: #F4F0ED;
+    padding-left: 5%;
+    padding-right: 60px;
+    width: 50%;
+}
+
+.detail-table {
+    padding: 10px;
+    width: 60%;
+    /* 或者指定具体的宽度 */
+    border-collapse: collapse;
+    /* 边框合并 */
+    margin: 20px 0;
+    /* 上下外边距 */
+    border-collapse: collapse;
+    /* 合并边框 */
+    border: 1px solid #afafaf;
+    border-radius: 10px;
+}
+
+@media (max-width: 990px) {
+    .ok-details-main-container {
+        flex-direction: column;
+    }
+
+    .ok-details-left {
+        height: 500px;
+    }
+
+    .ok-details-main-image {
+        width: 400px;
+        height: 400px;
+    }
+
+    .zoom-container {
+        width: 400px;
+        height: 400px;
+    }
+}

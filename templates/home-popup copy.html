@@ -1,0 +1,174 @@
+{% load static %}
+<style>
+    .fixed-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+        height: 52%;
+
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* 垂直居中 */
+        z-index: 1000;
+        /* 确保浮窗在顶层 */
+        border-radius: 20px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
+        user-select: none;
+        /* 防止文本被选中 */
+    }
+
+    .popup-content {
+        border-radius: 10px;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        background-color: #F4F0ED;
+        padding: 30px;
+    }
+
+    .left-side,
+    .right-side {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        /* 水平居中（对于图片很有用） */
+    }
+
+    .left-side img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        /* 保持图片比例 */
+        padding: 30px;
+    }
+
+    .right-side {
+        flex: 1;
+        /* 右侧占据剩余空间 */
+        padding-right: 30px;
+        padding-top: 30px;
+        text-align: center;
+        /* 文字居中 */
+    }
+
+    .overlay2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        /* 灰色半透明 */
+        z-index: 999;
+        /* 确保在内容之上但低于弹窗 */
+        display: none;
+        /* 初始时隐藏 */
+    }
+
+    /* 当屏幕宽度小于某个值时（比如600px，认为是移动端），隐藏弹窗 */
+    @media (max-width: 990px) {
+
+        .fixed-popup {
+            width: 80%;
+            height: 50%;
+        }
+
+    }
+
+    .orange-button {
+        background-color: orange;
+        color: white;
+        border: none;
+        /* 移除边框 */
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        /* 鼠标悬停时显示手指形状 */
+        text-decoration: none;
+        /* 虽然button默认没有下划线，但明确写出有助于理解 */
+        transition: color 0.3s ease;
+        /* 平滑过渡效果 */
+        margin-top: auto;
+        margin-bottom: 30px;
+        width: 100%;
+        background-color: #000;
+    }
+
+    .orange-button:hover {
+        background-color: #f92;
+
+    }
+
+    /* 可以根据需要添加更多的CSS样式 */
+</style>
+<div class="ok-floating-button" onclick="scrollToTop()">
+    <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="49" height="49" rx="10" fill="#FF9922" />
+        <path
+            d="M25.0003 26.4168V15.0835M25.0003 15.0835L20.7503 19.3335M25.0003 15.0835L29.2503 19.3335M20.7503 32.0835H22.167M27.8337 32.0835H29.2503M34.917 32.0835H36.3337M13.667 32.0835H15.0837"
+            stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</div>
+<div id="overlay2" class="overlay2" style="display:none;"></div>
+<div class="fixed-popup" id="fixedPopup">
+    <div class="close-btn">&times;</div>
+    <div class="popup-content">
+        <h3>With Minimum Order, Enjoy Maximum Savings!</h3>
+        <picture>
+            <source media="(max-width: 600px)" srcset="{% static 'img/gif/okeypackaging product infomation.gif' %}">
+            <source media="(min-width: 601px)" srcset="{% static 'img/gif/okeypackaging product infomation.gif' %}">
+            <img src="{% static 'img/gif/okeypackaging product infomation.gif' %}" alt="10termgif"
+                style="width: 70%;margin-left:auto;margin-right:auto;">
+        </picture>
+
+        <p style="font-weight:600;">With OkeyPackaging's Package Pricing, enjoy the Best Prices, Top Quality, and
+            Customised Service with the Lowest MOQ.</p>
+        <div style="text-align: center;">
+            <div class="orange-button" onclick="window.location.href='product-category/all/';">View Details</div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var closeBtn = document.querySelector('.close-btn');
+        var popup = document.getElementById('fixedPopup');
+        var overlay = document.getElementById('overlay2');
+
+        // 显示弹窗和遮罩层  
+        function showPopup() {
+            popup.style.display = 'flex';
+            overlay.style.display = 'block';
+        }
+
+        // 隐藏弹窗和遮罩层  
+        function hidePopup() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+        closeBtn.addEventListener('click', hidePopup);
+
+        // 如果需要在页面加载时自动显示浮窗，可以取消以下代码的注释  
+        showPopup();
+    });
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // 平滑滚动到顶部  
+        });
+    }  
+</script>

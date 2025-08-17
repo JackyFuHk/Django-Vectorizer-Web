@@ -1,0 +1,60 @@
+{% load static %}
+<script src="{% static 'js/editor.js' %}"></script>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Make Logo White Free Online Tool - PixelOpen.COM</title>
+    <link href="{% static 'css/editor.css' %}" rel="stylesheet">
+</head>
+
+
+<div class="overlay" id="overlay">
+    <div class="loader"></div>
+</div>
+
+<div class="toolbar">
+    <div class="toolbar-left">
+        <button id="zoom-in">
+            <img src="{% static 'img/homeImage/icons8-zoom-in-100.png' %}" width="40px">
+        </button>
+        <button id="zoom-out"><img src="{% static 'img/homeImage/icons8-zoom-out-100.png' %}" width="40px"></button>
+        <button class="download" id="color-palette"><span style="margin-left: 5px;">Pick Color → </span><input
+                type="color" id="colorPicker" value="#ffffff"></button>
+        <button class="download" id="uploadlogo"><img src="{% static 'img/homeImage/icons8-upload-100.png' %}"
+                width="40px"><span>Try Your Logo</span></button>
+        <button class="download" id="download"><img src="{% static 'img/homeImage/icons8-download-100.png' %}"
+                width="40px"><span>Download</span></button>
+
+    </div>
+
+    <div class="toolbar-right">
+        <button class="close-button" id="close-button"><img src="{% static 'img/homeImage/icons8-cancel-100.png' %}"
+                width="40px">
+    </div>
+</div>
+
+<div id="container">
+    <div class="image-wrapper left" id="left-container">
+        <img id="left-image" src="{{ leftImage }}" alt="Image" ondragstart="return false;">
+    </div>
+    <div class="image-wrapper right" id="right-container">
+        <img src="{{ right_image_png }}" id="right_image_png" alt="Image" ondragstart="return false;"
+            style="display: none;">
+        {{ rightImage|safe }}
+        <!-- <img id="right-image" src="{{ rightImage }}" alt="Image" ondragstart="return false;"> -->
+    </div>
+
+    <div class="splitter"></div>
+</div>
+
+<!-- <canvas id="myCanvas" width="width" height="height"></canvas>  
+<script type="text/javascript">  
+var canvas = document.getElementById('myCanvas');  
+var ctx = canvas.getContext('2d');  
+var img = new Image();  
+img.src = 'your-image-url.jpg';  
+img.onload = function() {  
+    ctx.drawImage(img, 0, 0);  
+};  </script> -->

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+    <title>{{ post.title }}</title>
+    <meta name="description" content="Blogs and News to white your logo">
+</head>
+
+
+<main>
+
+    <h1 class="ok-front-main-title" style="text-align: center;">{{ post.title|safe }}</h1>
+
+    <div class="ok-post-main-container">
+
+        <div class="ok-post-content">
+            {{ post.content|safe }}
+        </div>
+        <div class="ok-post-sidebar">
+            <h1>Related Posts</h1>
+            {% for post2 in posts %}
+            <div class="post-list-item" style="width: 100%;padding: 0;"
+                onclick="window.location.href='/blogs/{{ post2.slug }}/'">
+                <img src="{{ post2.cover_image.url }}" alt="{{ post2.cover_image_alt }}" class="post-list-image">
+                <h1 style="text-align: center;">{{ post2.title }}</h1>
+            </div>
+            {% endfor %}
+            <a href="/blogs/" style="text-align: right;">Back to list</a>
+        </div>
+    </div>
+    <img style="width: 100%;margin: 0 auto;" src="{{ post.cover_image.url  }}" alt="{{ post.cover_image_alt  }}">
+</main>
+{% endblock content %}

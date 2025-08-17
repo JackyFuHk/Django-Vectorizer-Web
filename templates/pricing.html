@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'js/pricing.js' %}"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/pricing.css' %}" rel="stylesheet">
+    <style>
+        .container2 {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .plan {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .plan h2 {
+            margin-top: 0;
+        }
+
+        .plan ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .plan ul li {
+
+            /* 替换为实际的图标或移除 */
+            background-size: 20px 20px;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+
+<main>
+    <div class="container2">
+        <h1>选择您的订阅计划</h1>
+
+        <div class="plan">
+            <h2>Plan: 基础订阅</h2>
+            <p><strong>价格: ￥49.9/月</strong></p>
+            <p><strong>适合人群</strong>: 初创设计公司或独立设计师, 需要基本的矢量化功能来满足日常需求。</p>
+            <ul>
+                <li>每月转换次数: 无限次</li>
+                <li>团队协作: 支持5个用户同时使用</li>
+                <li>客户支持: 邮件支持</li>
+            </ul>
+            <p><strong>额外福利</strong>: 3天免费试用期</p>
+            <a href="#" class="cta-button">立即订阅</a>
+        </div>
+
+
+
+        <h2>为什么选择我们?</h2>
+        <ul>
+            <li>高准确性: 矢量化不丢失细节。</li>
+            <li>高性能: 最快在1秒内即可完成转换。</li>
+            <li>性价比高: 与市面上按此收费的网站不同，我们订阅后可无限次使用。</li>
+            <li>便捷性: 与市面上按此收费的网站不同，我们每次可以转换8张图片，无需一张一张上传，极大得调高效率。</li>
+        </ul>
+
+        <h2>常见问题解答</h2>
+        <ul>
+            <li>如何开始免费试用?<br>只需点击“立即订阅”按钮，并按照提示完成注册流程即可。</li>
+            <li>如果我需要帮助怎么办?<br>请通过我们的24/7实时聊天或发送邮件至support@pixelopen.com联系我们。</li>
+        </ul>
+        <p><strong>特别提示</strong>: 不要错过首次订阅的独家折扣！立即行动，为您的业务或个人项目选择最合适的订阅计划。</p>
+    </div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+</head>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .profile-picture {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-picture img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ddd;
+    }
+
+    .info-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .info-row:last-child {
+        border-bottom: none;
+    }
+
+    .info-label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .info-value {
+        color: #666;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .buttons button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .buttons .edit-button {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .buttons .edit-button:hover {
+        background-color: #0056b3;
+    }
+
+    .buttons .renew-button {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    .buttons .renew-button:hover {
+        background-color: #218838;
+    }
+</style>
+<main>
+    <div class="container">
+        <!-- <div class="profile-picture">
+            <img src="https://via.placeholder.com/150" alt="用户头像">
+        </div> -->
+        <div class="info-section">
+            <!-- <div class="info-row">
+                <div class="info-label">Name</div>
+                <div class="info-value">{{ user.username }}</div>
+            </div> -->
+            <!-- <div class="info-row">
+                <div class="info-label">Phone</div>
+                <div class="info-value">123-456-7890</div>
+            </div> -->
+            <div class="info-row">
+                <div class="info-label">账户：</div>
+                <div class="info-value">{{ user.email }}</div>
+            </div>
+            <!-- <div class="info-row">
+                <div class="info-label">Address</div>
+                <div class="info-value">北京市朝阳区某街道某号</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Zip Code</div>
+                <div class="info-value">100000</div>
+            </div> -->
+        </div>
+        <div class="subscription-info">
+            {% if user_profile.is_subscription == False %}
+            <p>是否订阅: 否</p>
+            {% endif %}
+        </div>
+        <div class="subscription-info">
+
+            {% if user_profile.is_subscription == True %}
+            <p>会员有效期: {{ user_profile.subscriptionEnd }}</p>
+            {% endif %}
+        </div>
+        <div class="buttons">
+            <!-- <button class="edit-button">Modify information</button> -->
+            <!-- {% if user_profile.is_subscription == True %}
+            <a href='mailto:support@pixelopen.com'><button class="renew-button" id="cancel">Unsubscribe</button></a>
+            {% else %}
+            <a href='/subscription/'><button class="renew-button">Subscribe Now</button></a>
+            {% endif %} -->
+            <button class="renew-button" id="logout">登出</button>
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+    function setCookie(name, value, days = 365, path = '/') {
+        let expires = '';
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = `; expires=${date.toUTCString()}`;
+        }
+        document.cookie = `${name}=${encodeURIComponent(value)}${expires}; path=${path}`;
+    }
+    document.getElementById('logout').addEventListener('click', function () {
+        setCookie("is_login", "false", 365, '/');
+        window.location.href = '/logout/'
+    })
+
+</script>
+
+{% endblock content %}

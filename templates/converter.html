@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'js/converter.js' %}"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/converter.css' %}" rel="stylesheet">
+</head>
+
+
+<main>
+    <div class="convert-container">
+        <div class="convert-tool-title">{{ main_info.title }}</div>
+        <div class="convert-tool-subtitle">{{ main_info.subtitle }}</div>
+        <div class="convert-tool-subtitle">
+            <a href="/editor/pngtosvg"><img src="{% static 'img/homeImage/icons8-left-100.png' %}" alt="all tool icon"
+                    width="5%"><span>Tool - Convert PNG To SVG.</span> </a>
+            <a href="/editor/whitelogo/"><img src="{% static 'img/homeImage/icons8-left-100.png' %}" alt="all tool icon"
+                    width="5%"><span>Tool - Whiten Your Logo.</span> </a>
+        </div>
+
+        <div class="convert-input-output">
+
+            <div class="input-form">
+                <div class="output-container">
+                    <p>{{ input.name }}:</p>
+                    <input type="text" placeholder="{{ input.name }}{{ input.input_init }}"
+                        value="{{ input.name }}{{ input.input_init }}" id="{{ input.name }}">
+                </div>
+
+
+                {% for color, ranges in input.output_limit.items %}
+                <div class="output-container">
+                    <p>{{ ranges.name }}:</p>
+                    <div class="counter">
+                        <button onclick="decreaseCounter(this, '{{ color }}','{{ ranges.min }}')">-</button>
+                        <input type="text" value="0" id="{{ color }}" min="{{ ranges.min }}" max="{{ ranges.max }}">
+                        <button onclick="increaseCounter(this, '{{ color }}','{{ ranges.max }}')">+</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="nuxt-icon">
+                <a href="/convert/{{ main_info.change_slut }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        <path
+                            d="m19 8-4 4h3c0 3.31-2.69 6-6 6a5.87 5.87 0 0 1-2.8-.7l-1.46 1.46A7.93 7.93 0 0 0 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46A7.93 7.93 0 0 0 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+            <div class="output-form" id="{{ output.name }}">
+                <p>{{ output.name }}:</p>
+                {% for color, ranges in output.output_limit.items %}
+                <div class="output-container" id="output-{{ color }}">
+                    <p>{{ color }}:<span id="{{ color }}">0</span>{{ output.unit }}</p>
+                </div>
+                {% endfor %}
+                <button id="copyButton">copy result</button>
+            </div>
+        </div>
+
+        {% for phrase in main_info.description %}
+        <p> {{ phrase }} </p>
+        {% endfor %}
+
+    </div>
+
+
+</main>
+
+{% endblock content %}

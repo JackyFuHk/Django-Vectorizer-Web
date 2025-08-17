@@ -1,0 +1,222 @@
+.ok-navbar-container {
+    display: flex;
+    height: 60px;
+    /* 假设你有一个固定的高度 */
+    width: 100%;
+}
+
+/* 设置ul的样式（如果有需要的话，比如移除默认的padding和margin） */
+.ok-navbar-nav {
+    list-style-type: none;
+    /* 移除列表项前的标记 */
+    padding: 0;
+    /* 移除默认的padding */
+    margin: 0;
+    /* 移除默认的margin */
+    display: flex;
+    /* 使用flex布局来更容易地控制间隔 */
+
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.button-group button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.blue-button {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.blue-button:hover {
+    background-color: #000;
+}
+
+.blue-white-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.blue-white-button:hover {
+    background-color: #000;
+}
+
+.white-blue-button {
+    background-color: #fff;
+    color: #007BFF;
+    border: 2px solid #007BFF;
+}
+
+.white-blue-button:hover {
+    color: #000;
+}
+
+/* 为ok-nav-item的a标签（nav-link）设置基础样式 */
+.ok-nav-item .ok-nav-link {
+    color: black;
+    /* 文字颜色为黑色 */
+    margin-right: 20px;
+    /* 右侧外边距为20px，模拟列表项间隔 */
+    text-decoration: none;
+    /* 移除下划线（如果默认有的话） */
+    transition: color 0.3s;
+    /* 平滑过渡效果 */
+    padding-right: 40px;
+
+    color: black;
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+/* 当鼠标悬停在nav-link上时，改变颜色为橙色 */
+.ok-nav-item .ok-nav-link:hover,
+.ok-nav-item .ok-nav-link:focus {
+    /* 也包括焦点状态，提升可访问性 */
+    color: rgb(189, 189, 189);
+}
+
+/* 如果你需要特别设置点击态也是橙色（注意：CSS本身没有直接的“点击态”样式，这里我们通过:active伪类模拟） */
+.ok-nav-item .ok-nav-link:active {
+    color: #ff9922;
+}
+
+/* 特殊处理disabled的链接 */
+.ok-nav-item .ok-nav-link.disabled {
+    color: gray;
+    /* 禁用状态的文字颜色可以设置为灰色 */
+    /* pointer-events: none; */
+    /* 阻止点击事件 */
+    cursor: not-allowed;
+    /* 更改鼠标悬停时的光标样式，表示不可点击 */
+}
+
+/* 移除最后一个.nav-link的右侧外边距，以避免不必要的间隔 */
+.ok-navbar-nav .ok-nav-link:last-child {
+    margin-right: 0;
+}
+
+.ok-navbar-right-container {
+    float: right;
+    display: flex;
+    align-items: center;
+
+}
+
+.ok-navbar-collapse {
+    display: flex;
+    align-items: center;
+}
+
+/* login icon */
+#logined {
+    display: none;
+}
+
+.dropdown {
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中，需要父容器有高度或者设为flex容器的高度 */
+    height: 50px;
+    /* 设定父容器的高度，以便观察垂直居中效果 */
+    display: flex;
+    width: 200px;
+    justify-content: flex-start;
+}
+
+.dropdown-btn {
+    background-color: #d1d1d1;
+    color: #000;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #e2e2e2;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+
+    margin: 0 10px;
+}
+
+.dropdown a:hover {
+    color: #0000cc;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 添加倒三角图标，使用伪元素 */
+.dropdown-btn::after {
+    content: '▾';
+    margin-left: 8px;
+}
+
+/* search form*/
+
+@media (max-width: 990px) {
+
+    .ok-navbar-nav {
+        flex-direction: column;
+        /* 改为上下排列 */
+    }
+
+    .button-group button {
+        padding: 5px 10px;
+        font-size: 12px;
+        float: right;
+    }
+
+    .ok-navbar-collapse {
+        position: fixed;
+        /* 或者使用absolute，但fixed更常用于全屏覆盖 */
+        top: 70px;
+        left: 0;
+        width: 250px;
+        /* 或者根据需要调整 */
+        height: 0;
+        /* 初始高度为0 */
+        background-color: #F4F0ED;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, transform 0.3s ease, height 0.3s ease;
+        /* 注意：这里将max-height改为了height */
+        transform: translateX(-100%);
+        overflow: hidden;
+        z-index: 9999;
+        font-size: 20px;
+    }
+
+    .ok-navbar-collapse.show {
+        height: 20vh;
+        /* 使用vh单位来占据整个视口的高度 */
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+}

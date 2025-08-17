@@ -1,0 +1,105 @@
+.convert-container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 5%;
+}
+
+.convert-tool-title {
+    font-size: 40px;
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+    color: #000;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.convert-tool-subtitle {
+    font-size: 14px;
+    font-weight: 300;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.convert-input-output {
+    display: flex;
+    font-size: 20px;
+    color: #000;
+    flex-direction: row;
+    margin-top: 40px;
+    justify-content: space-between;
+    background-color: #aaa;
+    border-radius: 10px;
+    padding: 50px;
+    margin-bottom: 40px;
+}
+
+.input-form {
+    flex-direction: column;
+    width: 45%;
+}
+
+.output-form {
+    flex-direction: column;
+    width: 45%;
+    padding: 60px;
+}
+
+
+.output-container {
+    margin-bottom: 20px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+}
+
+.counter input {
+    width: 160px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.counter button {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+}
+
+.nuxt-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.nuxt-icon svg:hover {
+    fill: #fff;
+    cursor: pointer;
+}
+
+@media (max-width: 990px) {
+    .convert-container {
+        width: 100%;
+    }
+
+    .convert-input-output {
+        padding: 5px;
+    }
+
+    .counter input {
+        width: 120px;
+        text-align: center;
+        margin: 0 10px;
+    }
+
+    .output-container input {
+        width: 120px;
+    }
+
+    .nuxt-icon {
+        display: none;
+    }
+
+
+}

@@ -1,0 +1,50 @@
+{% load static %}
+<script src="{% static 'js/pngtosvg.js' %}"></script>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title> Vectorize Your PNG and JPG File, Bitmap Image To SVG Online Tool - PixelOpen.COM</title>
+    <link href="{% static 'css/pngtosvg.css' %}" rel="stylesheet">
+</head>
+
+
+<div class="overlay" id="overlay">
+    <div class="loader"></div>
+</div>
+
+<div class="toolbar">
+    <div class="toolbar-left">
+        <button class="download" id="uploadlogo"><img src="{% static 'img/homeImage/icons8-upload-100.png' %}"
+                width="40px"><span>Try New Image</span></button>
+        <button class="download" id="download" href=""><img src="{% static 'img/homeImage/icons8-download-100.png' %}"
+                width="40px"><span>Download SVG</span></button>
+
+    </div>
+
+    <div class="toolbar-right">
+        <button class="close-button" id="close-button"><img src="{% static 'img/homeImage/icons8-cancel-100.png' %}"
+                width="40px">
+    </div>
+</div>
+
+
+<div id="container">
+    <div class="image-wrapper" id="right-container">
+        <img src="{{ rightImage|safe }}" id="right_image_png" alt="Image" ondragstart="return false;">
+        <canvas id="myCanvas"></canvas>
+        <a id="downloadLink" style="display: none;"></a>
+    </div>
+
+</div>
+
+<!-- <canvas id="myCanvas" width="width" height="height"></canvas>  
+<script type="text/javascript">  
+var canvas = document.getElementById('myCanvas');  
+var ctx = canvas.getContext('2d');  
+var img = new Image();  
+img.src = 'your-image-url.jpg';  
+img.onload = function() {  
+    ctx.drawImage(img, 0, 0);  
+};  </script> -->
