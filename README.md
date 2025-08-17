@@ -49,12 +49,27 @@ This tool is designed for developers, designers, and researchers who need fast, 
 
 ---
 ## 📂 How to Run Locally
+## 🚀 Quick Start
+
+```bash
+# 1. Clone the repository
 git clone https://github.com/JackyFuHk/Django-Vectorizer-Web.git
+
+# 2. Enter the project directory
 cd Django-Vectorizer-Web
+
+# 3. Create and activate a virtual environment
 python3 -m venv venv && source venv/bin/activate
+
+# 4. Install dependencies
 pip install -r requirements.txt
+
+# 5. Apply database migrations
 python manage.py migrate
+
+# 6. Run the development server
 python manage.py runserver
+
 
 
 
@@ -65,110 +80,39 @@ python manage.py runserver
 |   +---pngtosvg
 +---core
 |   +---management
-|   |   \---commands
 |   +---migrations
 +---djecommerce
 |   +---settings
 +---locale
 |   +---en
-|   |   \---LC_MESSAGES
 |   +---zh_Hans
-|   |   \---LC_MESSAGES
 |   \---zh_Hant
-|       \---LC_MESSAGES
 +---log
 +---media_root
 |   +---models
 |   +---model_ass
-|   \---ProductImage
 +---static_in_env
 |   +---client_svg
 |   +---css
 |   |   +---addons
-|   |   \---modules
 |   +---font
-|   |   \---roboto
 |   +---fonts
 |   +---img
-|   |   +---gif
-|   |   +---homeImage
-|   |   +---lightbox
-|   |   +---logo
-|   |   +---newhome
-|   |   +---outline
-|   |   +---overlays
-|   |   +---pngtosvg
-|   |   +---removebg
-|   |   +---svg
-|   |   +---upscale
-|   |   \---video
 |   +---js
-|   |   +---addons
-|   |   +---home
-|   |   \---modules
 |   \---scss
-|       +---addons
-|       +---core
-|       |   \---bootstrap
-|       \---free
-|           \---modules
-|               \---animations-extended
 +---static_root
 |   +---admin
-|   |   +---css
-|   |   |   \---vendor
-|   |   |       \---select2
-|   |   +---img
-|   |   |   \---gis
-|   |   \---js
-|   |       +---admin
-|   |       \---vendor
-|   |           +---jquery
-|   |           +---select2
-|   |           |   \---i18n
-|   |           \---xregexp
 |   +---css
-|   |   +---addons
-|   |   \---modules
 |   +---debug_toolbar
-|   |   +---css
-|   |   \---js
 |   +---flags
 |   +---font
-|   |   \---roboto
 |   +---fonts
 |   +---img
-|   |   +---gif
-|   |   +---homeImage
-|   |   +---lightbox
-|   |   +---logo
-|   |   +---newhome
-|   |   +---outline
-|   |   +---overlays
-|   |   +---pngtosvg
-|   |   +---removebg
-|   |   \---svg
 |   +---js
-|   |   +---addons
-|   |   +---home
-|   |   \---modules
 |   \---scss
-|       +---addons
-|       +---core
-|       |   \---bootstrap
-|       \---free
-|           \---modules
-|               \---animations-extended
 \---templates
     +---account
-    |   +---email
-    |   +---messages
-    |   \---snippets
     +---blog
     +---openid
     +---products
     \---socialaccount
-        +---messages
-        \---snippets
-
-
