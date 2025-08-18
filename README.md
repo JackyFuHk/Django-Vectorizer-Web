@@ -10,7 +10,7 @@ I specialize in **Machine Learning, Data Science, and backend engineering, API d
 - 💼 Strong experience with **Python, Django, REST APIs, Docker, PostgreSQL**  
 - ⚙️ Familiar with **async processing, Celery, Redis, and modern CI/CD pipelines, AZure**  
 - 🎨 Interested in projects combining **web apps + image processing + automation**  
-- 🔗 [LinkedIn](https://www.linkedin.com/in/your-linkedin/) | [GitHub](https://github.com/JackyFuHk)  
+- 🔗 [LinkedIn](https://www.linkedin.com/in/jiawei-chen-4095802a9/) | [GitHub](https://github.com/JackyFuHk)  
 - 📧 tobiaschannel1999@gmail.com  
 
 ---
