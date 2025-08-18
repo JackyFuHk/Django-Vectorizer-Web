@@ -69,9 +69,10 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-DOMAIN_NAME=''
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+DOMAIN_NAME= config('DOMAIN_NAME')
+STATIC_URL = config('STATIC_URL')
+MEDIA_URL = config('MEDIA_URL')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
@@ -81,7 +82,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
     'social.backends.weixin.WeixinOAuth2'
-    
 )
 
 SITE_ID = 1
@@ -125,23 +125,23 @@ LOGGING = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = ''
-EMAIL_PORT = 587
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = ''
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 
 
-SOCIAL_AUTH_WEIXIN_KEY  = ''
-SOCIAL_AUTH_WEIXIN_SECRET  = ''
-WECHAT_REDIRECT_URI = ''
-WECHAT_MSG_TOKEN = ''
+SOCIAL_AUTH_WEIXIN_KEY  = config('SOCIAL_AUTH_WEIXIN_KEY')
+SOCIAL_AUTH_WEIXIN_SECRET  = config('SOCIAL_AUTH_WEIXIN_SECRET')
+WECHAT_REDIRECT_URI = config('WECHAT_REDIRECT_URI')
+WECHAT_MSG_TOKEN = config('WECHAT_MSG_TOKEN')
 
-SMS_ACCESS_ID = ''
-SMS_ACCESS_SECRET = ''
+SMS_ACCESS_ID = config('SMS_ACCESS_ID')
+SMS_ACCESS_SECRET = config('SMS_ACCESS_SECRET')
 
 
 # 国际化 中英双语
@@ -164,11 +164,11 @@ LOCALE_PATHS = (
 
 
 
-WECHAT_PAY_APP_ID = ''
-WECHAT_PAY_MCH_ID = ''
-WECHAT_PAY_API_KEY = ''
-WECHAT_PAY_NOTIFY_URL = ''
-trade_type = ''
-UFDODER_URL = ""
-CREATE_IP = ''
-QRCODEPATH = ""
+WECHAT_PAY_APP_ID = config('WECHAT_PAY_APP_ID')
+WECHAT_PAY_MCH_ID = config('WECHAT_PAY_MCH_ID')
+WECHAT_PAY_API_KEY = config('WECHAT_PAY_API_KEY')
+WECHAT_PAY_NOTIFY_URL = config('WECHAT_PAY_NOTIFY_URL')
+trade_type = 'NATIVE'
+UFDODER_URL = config('UFDODER_URL')
+CREATE_IP = config('CREATE_IP')
+QRCODEPATH = "static/qrcode"
