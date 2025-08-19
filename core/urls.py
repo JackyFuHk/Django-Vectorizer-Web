@@ -7,6 +7,7 @@ from django.contrib.sitemaps.views import sitemap
 from .sitemap import MyPostSitemap,MyToolSitemap,StaticViewSitemap
 from django.contrib.sites.models import Site  
 
+
 # 在你的 Django shell 或者一个管理脚本中运行  
 site = Site.objects.get(id=1)  
 site.domain = 'vectorizer.cn'  # 替换为你的实际域名  
@@ -64,7 +65,7 @@ urlpatterns = [
     # path('/paypal-cancel/', views.PaypalCancelView.as_view(), name='paypal-cancel'),
 
     path('getCode/',views.getActivateCode,name='get_code'),
-
+    
     path('',  views.homeView, name='home'),
     path('upload-image/',views.upload_image,name='upload'),
     path('pngtosvg/', views.pngtosvg, name='pngtosvg'),
@@ -102,4 +103,5 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
   
 ]
+
 
