@@ -505,80 +505,81 @@ async function fetchReverseImage2(files) {
 }
 
 async function is_authority() {
-
-    // 获取 cookie 判断是不是有activate code
-    const activate_code = getCookie('activate');
-    if (activate_code == null) {
-        var closeBtn = document.querySelector('.close-btn');
-        var popup = document.getElementById('fixedPopup2');
-        var overlay = document.getElementById('overlay2');
-
-
-        // 显示弹窗和遮罩层  
-        function showPopup() {
-            popup.style.display = 'flex';
-            closeBtn.style.display = 'block';
-            overlay.style.display = 'block';
-        }
-
-        // 隐藏弹窗和遮罩层  
-        function hidePopup() {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
-            closeBtn.style.display = 'none';
-        }
-        showPopup();
-        closeBtn.addEventListener('click', hidePopup);
-        is_auth = false;
-        return false
-    }
-    if (activate_code == "true") {
-        is_auth = true;
-
-        return true
-    }
-    else {
-        var closeBtn = document.querySelector('.close-btn');
-        var popup = document.getElementById('fixedPopup2');
-        var overlay = document.getElementById('overlay2');
+    is_auth = true;
+    return true;
+    // // 获取 cookie 判断是不是有activate code
+    // const activate_code = getCookie('activate');
+    // if (activate_code == null) {
+    //     var closeBtn = document.querySelector('.close-btn');
+    //     var popup = document.getElementById('fixedPopup2');
+    //     var overlay = document.getElementById('overlay2');
 
 
-        // 显示弹窗和遮罩层  
-        function showPopup() {
-            popup.style.display = 'flex';
-            overlay.style.display = 'block';
-        }
+    //     // 显示弹窗和遮罩层  
+    //     function showPopup() {
+    //         popup.style.display = 'flex';
+    //         closeBtn.style.display = 'block';
+    //         overlay.style.display = 'block';
+    //     }
 
-        // 隐藏弹窗和遮罩层  
-        function hidePopup() {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
-        }
-        showPopup();
-        closeBtn.addEventListener('click', hidePopup);
-        is_auth = false;
-        return false
-    }
+    //     // 隐藏弹窗和遮罩层  
+    //     function hidePopup() {
+    //         popup.style.display = 'none';
+    //         overlay.style.display = 'none';
+    //         closeBtn.style.display = 'none';
+    //     }
+    //     showPopup();
+    //     closeBtn.addEventListener('click', hidePopup);
+    //     is_auth = false;
+    //     return false
+    // }
+    // if (activate_code == "true") {
+    //     is_auth = true;
 
-    const response = await fetch('/is_subscription/', {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': getCookie('csrftoken')
-        },
-    });
+    //     return true
+    // }
+    // else {
+    //     var closeBtn = document.querySelector('.close-btn');
+    //     var popup = document.getElementById('fixedPopup2');
+    //     var overlay = document.getElementById('overlay2');
 
-    // 检查响应状态是否正常（200-299）
-    if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-    }
 
-    // 解析响应体为 JSON
-    const data = await response.json();
+    //     // 显示弹窗和遮罩层  
+    //     function showPopup() {
+    //         popup.style.display = 'flex';
+    //         overlay.style.display = 'block';
+    //     }
 
-    // console.log('Success:', data["user_png"]); // 如果需要的话，可以取消注释这行代码
-    // console.log(data['is_auth']);
-    is_auth = data['is_auth'];
-    return data['is_auth']; // 返回解析后的数据中的is_auth字段
+    //     // 隐藏弹窗和遮罩层  
+    //     function hidePopup() {
+    //         popup.style.display = 'none';
+    //         overlay.style.display = 'none';
+    //     }
+    //     showPopup();
+    //     closeBtn.addEventListener('click', hidePopup);
+    //     is_auth = false;
+    //     return false
+    // }
+
+    // const response = await fetch('/is_subscription/', {
+    //     method: 'POST',
+    //     headers: {
+    //         'X-CSRFToken': getCookie('csrftoken')
+    //     },
+    // });
+
+    // // 检查响应状态是否正常（200-299）
+    // if (!response.ok) {
+    //     throw new Error('Network response was not ok ' + response.statusText);
+    // }
+
+    // // 解析响应体为 JSON
+    // const data = await response.json();
+
+    // // console.log('Success:', data["user_png"]); // 如果需要的话，可以取消注释这行代码
+    // // console.log(data['is_auth']);
+    // is_auth = data['is_auth'];
+    // return data['is_auth']; // 返回解析后的数据中的is_auth字段
 }
 
 async function upload_image() {
