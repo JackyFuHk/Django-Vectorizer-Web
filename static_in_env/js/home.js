@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (is_auth == true) { upload_image_new(); }
 
     })
-    var homepngtosvgbtn2 = document.getElementById('read2');
-    homepngtosvgbtn2.addEventListener('click', function () {
-        const auth = is_authority();
-        if (is_auth == true) { upload_image_new(); }
+    // var homepngtosvgbtn2 = document.getElementById('read2');
+    // homepngtosvgbtn2.addEventListener('click', function () {
+    //     const auth = is_authority();
+    //     if (is_auth == true) { upload_image_new(); }
 
-    })
+    // })
 
 
     const container2 = document.getElementById('upload-image-btn3');
