@@ -23,7 +23,7 @@ from django.contrib import messages
 from django.contrib.staticfiles.storage import staticfiles_storage  
 from .models import CustomAuthenticationForm,UserProfile,ActivateCode
 import xml.etree.ElementTree as ET
-stripe.api_key = settings.STRIPE_SECRET_KEY
+
 from django.contrib.auth import authenticate  
 from django.views.decorators.csrf import csrf_exempt
 import re
