@@ -190,8 +190,8 @@ def register_send_certification(request):
             # 生成验证码  
             verification_code = generate_verification_code(length=6)  
             request.session['certification_code'] = verification_code
-            subject = 'VectorizerCN - 矢量化验证码'  
-            message = f'欢迎来到VectorizerCN免费矢量化工具网站. \n您的验证码为: {verification_code}'  
+            subject = 'VectorizerCN - Validation Code'  
+            message = f'欢迎使用VectorizerCN矢量化工具网站. \n您的验证码为: {verification_code}'  
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False)  
             
             return JsonResponse({'code':'200','status': 'success', 'message': '验证码已发送'})  
