@@ -334,7 +334,8 @@ def home_download_svg(request):
     # ImageHistory.objects.filter(user_name=request.user.username,is_download=False,tool="png2svg",initial_img=png_url).update(is_download = True)
     return JsonResponse(response_data)
 
-
+def author_view(request):
+    return render(request,  "author.html")
 
 def about_us(request):
     return render(request,  "about_us.html")

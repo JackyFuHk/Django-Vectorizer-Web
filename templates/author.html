@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jiawei Chen — 个人介绍页</title>
+  <meta name="description" content="Jiawei Chen（@JackyFuHk）的个人简历 / 个人介绍页。机器学习与大语言模型（LLM）工程方向。" />
+  <meta property="og:title" content="Jiawei Chen — 个人介绍页" />
+  <meta property="og:description" content="机器学习与大语言模型（LLM）工程方向。项目、技能、社交链接。" />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --panel: #0f1219;
+      --text: #e6e9ef;
+      --muted:#9aa3b2;
+      --brand:#6aa1ff;
+      --accent:#9b87f5;
+      --ok:#22c55e;
+      --warn:#f59e0b;
+      --radius:18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --panel:#ffffff; --text:#0f172a; --muted:#53607a; --brand:#2563eb; --accent:#7c3aed; }
+    }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "PingFang SC", Noto Sans SC, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(106,161,255,.15), transparent 60%),
+                  radial-gradient(1000px 500px at 10% -10%, rgba(155,135,245,.15), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .container{ max-width:1100px; margin:0 auto; padding:28px 20px 72px }
+    header{ position:sticky; top:0; backdrop-filter:saturate(180%) blur(10px); background:color-mix(in srgb, var(--bg), transparent 60%); z-index:50; border-bottom:1px solid color-mix(in srgb, var(--muted), transparent 70%)}
+    header .nav{ max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:14px; justify-content:space-between }
+    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit }
+    .logo{ width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--accent)); box-shadow:var(--shadow) }
+    .brand h1{ margin:0; font-size:18px; letter-spacing:.2px }
+    .nav a.link{ color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px }
+    .nav a.link:hover{ background:color-mix(in srgb, var(--panel), transparent 60%); color:var(--text) }
+
+    .hero{ display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; margin-top:28px }
+    @media (max-width:900px){ .hero{ grid-template-columns:1fr } }
+    .card{ background:linear-gradient(0deg, color-mix(in srgb, var(--panel), transparent 0%), color-mix(in srgb, var(--panel), transparent 0%)) padding-box,
+                       linear-gradient(135deg, color-mix(in srgb, var(--brand), transparent 20%), color-mix(in srgb, var(--accent), transparent 20%)) border-box;
+           border:1px solid transparent; border-radius:var(--radius); box-shadow:var(--shadow); }
+    .hero .intro{ padding:28px }
+    .kicker{ display:inline-flex; gap:8px; align-items:center; color:var(--muted); font-size:13px; letter-spacing:.3px }
+    .kicker .dot{ width:6px; height:6px; border-radius:999px; background:var(--ok) }
+    .intro h2{ margin:10px 0 8px; font-size:36px; letter-spacing:.4px }
+    .intro p{ margin:0 0 20px; font-size:16px; color:var(--muted) }
+    .badges{ display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 }
+    .badge{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; text-decoration:none; color:var(--text); background:color-mix(in srgb, var(--panel), transparent 0%); border:1px solid color-mix(in srgb, var(--muted), transparent 70%) }
+    .badge span{ font-size:14px }
+
+    .portrait{ display:grid; place-items:center; padding:20px }
+    .avatar{ width:220px; aspect-ratio:1/1; border-radius:24px; background:linear-gradient(135deg, var(--brand), var(--accent)); padding:6px }
+    .avatar img{ width:100%; height:100%; border-radius:18px; object-fit:cover; display:block; background:color-mix(in srgb, var(--panel), transparent 0%) }
+    .hint{ color:var(--muted); font-size:12px; margin-top:10px }
+
+    section{ margin-top:42px }
+    .section-title{ font-size:22px; margin:0 0 14px; letter-spacing:.3px }
+
+    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:18px }
+    .col-4{ grid-column: span 4 }
+    .col-6{ grid-column: span 6 }
+    .col-12{ grid-column: span 12 }
+    @media (max-width:900px){ .col-4, .col-6{ grid-column: span 12 } }
+
+    .stack{ display:flex; flex-wrap:wrap; gap:10px }
+    .chip{ padding:8px 12px; border-radius:12px; background:color-mix(in srgb, var(--panel), transparent 0%); border:1px solid color-mix(in srgb, var(--muted), transparent 70%); color:var(--text); font-size:14px }
+
+    .projects .item{ padding:18px; border-radius:16px; background:color-mix(in srgb, var(--panel), transparent 0%); border:1px solid color-mix(in srgb, var(--muted), transparent 70%); transition:transform .18s ease }
+    .projects .item:hover{ transform: translateY(-2px) }
+    .projects .item h3{ margin:0 0 6px; font-size:18px }
+    .projects .item p{ margin:0 0 10px; color:var(--muted) }
+    .projects .item a{ text-decoration:none; color:var(--brand); font-weight:600 }
+
+    .footer{ margin-top:52px; padding:18px; text-align:center; color:var(--muted) }
+
+    .cta{ display:flex; gap:12px; flex-wrap:wrap }
+    .btn{ padding:12px 16px; border-radius:12px; border:1px solid color-mix(in srgb, var(--muted), transparent 70%); text-decoration:none; color:var(--text); background:color-mix(in srgb, var(--panel), transparent 0%); font-weight:600 }
+    .btn.primary{ background:linear-gradient(135deg, var(--brand), var(--accent)); border:none; color:white }
+  </style>
+</head>
+<body>
+
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="card intro">
+        <div class="kicker"><span class="dot"></span>个人介绍页 · About Me</div>
+        <h2>机器学习 & LLM 工程师</h2>
+        <p>4+ 年计算机视觉与 NLP 实战经验，专注把大语言模型 <strong>落地到生产</strong>。目前围绕 RAG、Agent、推理加速与产品化交付做工程迭代。</p>
+        <div class="badges">
+          <a class="badge" href="https://www.linkedin.com/in/jiawei-chen-4095802a9/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4zM8.5 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.2c0-1.72-.03-3.94-2.4-3.94-2.4 0-2.77 1.87-2.77 3.8V24h-4z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a class="badge" href="https://github.com/JackyFuHk" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.48 0-.23-.01-.98-.01-1.78-2.78.62-3.37-1.2-3.37-1.2-.46-1.2-1.12-1.52-1.12-1.52-.92-.64.07-.63.07-.63 1.01.07 1.54 1.06 1.54 1.06.9 1.58 2.36 1.12 2.94.85.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.32.1-2.74 0 0 .85-.28 2.8 1.05.82-.23 1.69-.35 2.56-.35.87 0 1.75.12 2.56.35 1.95-1.33 2.8-1.05 2.8-1.05.55 1.42.2 2.48.1 2.74.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .26.18.59.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+            <span>@JackyFuHk</span>
+          </a>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#projects">查看项目</a>
+          <a class="btn" href="#contact">联系我</a>
+        </div>
+      </div>
+      <div class="card portrait">
+        <div class="avatar">
+          <!-- 如果你有头像，请把 src 换成你的图片地址 -->
+          <img src="https://avatars.githubusercontent.com/u/0?v=4" alt="头像占位符" />
+        </div>
+        <div class="hint">建议替换为你的真实头像（正方形，≥ 600×600px）。</div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">精选项目</h2>
+      <div class="grid projects">
+        <article class="item col-4">
+          <h3>LLM Development Kit</h3>
+          <p>面向工程实践的 LLM 模板与教程：最小可运行 Demo、RAG 管线、部署样例。</p>
+          <a href="https://github.com/JackyFuHk/llm-development-kit" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="item col-4">
+          <h3>Azure OAuth 全流程演示</h3>
+          <p>动手实验演示 Azure AD / OAuth2 令牌生命周期，涵盖授权码与客户端凭证流程。</p>
+          <a href="https://github.com/JackyFuHk/azure-lab-demo" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+        <article class="item col-4">
+          <h3>Django 矢量化工具</h3>
+          <p>将位图（JPG/PNG）转换为可缩放的 SVG 的 Web 应用，便于远程开发与扩展。</p>
+          <a href="https://github.com/JackyFuHk/Django-Vectorizer-Web" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">技能栈</h2>
+      <div class="grid">
+        <div class="col-6">
+          <div class="stack">
+            <span class="chip">Python</span>
+            <span class="chip">JavaScript / TypeScript</span>
+            <span class="chip">LangChain</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">Django</span>
+            <span class="chip">RAG / Agent</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Docker</span>
+            <span class="chip">GitHub Actions</span>
+            <span class="chip">Azure / OAuth2</span>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="stack">
+            <span class="chip">嵌入与向量检索</span>
+            <span class="chip">Prompt 设计</span>
+            <span class="chip">模型微调</span>
+            <span class="chip">可观测性</span>
+            <span class="chip">性能优化</span>
+            <span class="chip">前端（React 基础）</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">关于我</h2>
+      <div class="card" style="padding:18px">
+        <p>你好，我是 <strong>Jiawei Chen</strong>。我喜欢把复杂的 AI 技术做成<strong>简单、稳定、可交付</strong>的产品体验。擅长在业务场景中快速迭代，从想法到原型到上线闭环。除工作外，我也会在 GitHub 分享一些工程化的小工具与实践经验。</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">联系</h2>
+      <div class="card" style="padding:18px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
+        <div>
+          <div style="font-weight:700; font-size:18px">让我们聊聊你要做的事。</div>
+          <div style="color:var(--muted)">可通过 LinkedIn 或 GitHub 与我取得联系。</div>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://www.linkedin.com/in/jiawei-chen-4095802a9/" target="_blank" rel="noopener">在 LinkedIn 上联系</a>
+          <a class="btn" href="https://github.com/JackyFuHk" target="_blank" rel="noopener">访问 GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>© <span id="year"></span> Jiawei Chen · 本页为静态单文件 HTML，可直接部署到 GitHub Pages / Vercel / 静态空间。</small>
+    </footer>
+  </main>
+
+  <script>
+    // 年份自动更新
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -91,6 +91,7 @@ urlpatterns = [
     # path('delete-file/', views.delete_file, name='delete_file'),
     path('support/', views.contact_view, name='contact'),
     path('about-us/', views.about_us, name='about_us'),
+    path('author/',views.author_view,name='author'),
     path('blogs/', views.post_list, name='post_list'),  
     path('blogs/<slug:slug>/', views.post_detail, name='post_detail'),
     path('policies/terms/', views.policy_term, name='policy_term'),  
