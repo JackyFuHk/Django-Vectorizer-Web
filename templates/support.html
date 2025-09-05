@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<head>
+
+    <link href="{% static 'css/support.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <title>Contact to Support Your Problem to White Your PNG and JPG Images Free Online - PixelOpen.COM</title>
+    <meta name="description"
+        content="Support Your Problem to White Your PNG and JPG Images Free Online. Fully automatically. Using AI. With Full Color">
+</head>
+<main>
+    <div class="ok-support-container">
+        <h1 class="ok-front-main-title">Contact Support</h1>
+        <div class="ok-home-block">
+            <div class="info-column-faq" style="max-width:1200px">
+                <div class="two-column">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.as_p|safe }}
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <div class="two-column">
+                    <h1>Common Problems & Solutions</h1>
+                    <p class="info-cell" style="font-weight: 500;  text-align: left;">Common Issues and Their Solutions
+                    </p>
+                    <p class="info-cell" style="text-align: left;">
+                        If you encounter any difficulties, try using a different browser or computer: In most cases,
+                        switching to another browser or computer can resolve the issue.</p>
+
+                    <p class="info-cell" style="font-weight: 500;  text-align: left;">Out of Memory Error:</p>
+                    <p class="info-cell" style="text-align: left;">
+                        If you receive an error message indicating insufficient memory, you may need to close some tabs
+                        or applications or restart your computer or browser to free up memory.</p>
+                    <p class="info-cell" style="font-weight: 500;  text-align: left;">Malware:</p>
+                    <p class="info-cell" style="text-align: left;">
+                        Malicious software, often accidentally installed, can disrupt your browser by redirecting web
+                        requests to ad-laden pages. Be cautious when downloading software from the internet, as
+                        unscrupulous individuals may add malware to the installers, damaging your computer. If your
+                        system is infected, remove the malware promptly. Microsoft offers a free malware removal tool
+                        that you may find helpful.</p>
+                    <p class="info-cell" style="font-weight: 500;  text-align: left;">Plugins/Extensions:</p>
+                    <p class="info-cell" style="text-align: left;">
+                        Faulty plugins and extensions can frequently disrupt web functionality and compromise your
+                        online security and privacy. Avoid installing questionable plugins or extensions and limit your
+                        use to those that are absolutely necessary.</p>
+                    <p class="info-cell" style="font-weight: 500;  text-align: left;">Firewalls/Proxies:</p>
+                    <p class="info-cell" style="text-align: left;">
+                        Firewalls and proxies can interfere with web requests, particularly web sockets. If your
+                        firewall or proxy is configured to block the normal operation of this site, you will need to
+                        reconfigure it. We apologize for any inconvenience this may cause.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+
+
+
+
+{% endblock content %}

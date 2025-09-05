@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <title>Blogs and News to white your logo - PixelOpen.COM</title>
+    <meta name="description" content="Blogs and News to white your logo">
+</head>
+<main>
+    <h1 class="ok-front-main-title" style="text-align: center;">Blog Posts</h1>
+    <div class="post-list">
+        {% for post in posts %}
+        <div class="post-list-item" onclick="window.location.href='{{ post.slug }}/'">
+            <img src="{{ post.cover_image.url }}" alt="{{ post.cover_image_alt }}" class="post-list-image">
+            <h1>{{ post.title }}</h1>
+            <h4>{{ post.short_description }}</h4>
+            <p>by {{ post.post_author }} at {{ post.updated_at }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+</main>
+
+{% endblock content %}

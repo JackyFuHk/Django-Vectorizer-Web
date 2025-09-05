@@ -1,0 +1,172 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="screen" />
+<link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen" />
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}" media="screen" />
+
+<script src="{% static 'js/header.js' %}"></script>
+
+
+<header id="header" style="background-color: #fff;">
+  {% if user.is_authenticated %}
+  <div class="mobileauth">
+    <li>
+      <p style="white-space: nowrap;">欢迎, {{ user.username }}!</p>
+      <a href="/account/" target="_blank">我的账户</a>
+    </li>
+  </div>
+  {% else %}
+  <div class="mobileauth">
+    <a href="/register/"><button class="blue-button" id="registerButton">注册/登录</button></a>
+  </div>
+  {% endif %}
+  <div class="container2">
+    <div class="row">
+      <div class="col-lg-4">
+        <a href="/" class="logotype"><img src="{% static 'img/logo/pixelopen_logo.png' %}"
+            alt=" Conversion designer - Jaka Šmid">
+          <span style="color:#000">Vectorizer</span> </br>
+          免费矢量化神器
+        </a>
+      </div>
+
+      <div class="col-lg-8" style="right: 5%;">
+        <nav class="navbar navbar-expand-lg navbar-light float-right">
+          <button class="navbar-toggler info-line" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class='active'>
+                <a href="/" style="color:#000">首页</a>
+              </li>
+              <li>
+                <a href="/author/" style="color:#000">作者介绍</a>
+              </li>
+              <li>
+                <a href="/api/" style="color:#000">API服务</a>
+              </li>
+              <!-- Dropdown Menu for Products -->
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle parent-menu" href="#" id="navbarDropdown" role="button"
+                  style="color:#000">
+                  工具大全
+                </a>
+                <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/tool/pngtosvg/">AI位图转矢量</a>
+                  <a class="dropdown-item" href="/tool/removebg/" target="_blank">AI图片去除背景</a>
+                  <a class="dropdown-item" href="/tool/upscale/" target="_blank">AI图片无损放大</a>
+                  <a class="dropdown-item" href="/tool/outline/" target="_blank">AI自动叠底色工具</a> -->
+              <!-- <a class="dropdown-item" href="/tool/whitelogo/" target="_blank">AI反色反白神器</a> -->
+              <!-- <a class="dropdown-item" href="/tool/pickpattern/" target="_blank">AI抠图(测试版)</a> -->
+              <!-- </div>
+              </li> -->
+
+              {% if user.is_authenticated %}
+              <li>
+                <a href="/account/">欢迎, {{ user.username }}!</a>
+              </li>
+              <li>
+                <a href="/account/" target="_blank">我的账户</a>
+              </li>
+              {% else %}
+              <li>
+                <a href="/register/"><button class="blue-button" id="registerButton">注册</button></a>
+                <a href="/login/"><button class="blue-button" id="registerButton">登录</button></a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;height: 70px;box-shadow: none; ">
+  <div class="ok-navbar-container">
+
+    <button class="navbar-toggler" type="button" id="ok-navbar-toggler">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <a class="navbar-brand waves-effect" href="/" style="margin-right: 60px;">
+      <img src="{% static 'img/logo/pixelopen_logo.png' %}" alt="pixelopen logo" width="50" />
+    </a>
+
+    <div class="ok-navbar-collapse">
+      <ul class="ok-navbar-nav">
+        <li class="ok-nav-item">
+          <a class="ok-nav-link" href="/api/">API</a>
+        </li>
+        <li class="ok-nav-item">
+          <a class="ok-nav-link" href="/contact-us/">Pricing</a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-btn" href="/"
+            style="background-color: #ffffff;margin-right: 10px;text-decoration: none;transition: color 0.3s;color: black;font-size: 16px;font-family: Poppins;font-weight: 600;word-wrap: break-word">Tools</a>
+          <div class="dropdown-content">
+            <a href="/tool/vectorizer/">AI位图转矢量</a>
+            <a href="/tool/removebg/">AI图片去除背景</a>
+            <a href="/tool/resize/">AI图片无损放大</a>
+            <a href="/tool/colorpicker/">位图提取颜色神器</a>
+            <a href="/tool/patternpicker/">AI提取图案工具</a>
+            <a href="/tool/colormatch/">AI颜色搭配神器</a>
+            <a href="/tool/imgkuotu/">AI扩图神器</a>
+          </div>
+        </li>
+        <li class="ok-nav-item">
+          <a class="ok-nav-link" href="/api/">API</a>
+        </li>
+        <li class="ok-nav-item">
+          <a class="ok-nav-link" href="/subscribe/">订阅我们</a>
+        </li>
+        <li class="ok-nav-item">
+          <a class="ok-nav-link" href="/support/">技术支持</a>
+        </li>
+        <li class="ok-nav-item">
+          <a class="ok-nav-link" href="/about-us/">关于我们</a>
+        </li>
+        <li class="ok-nav-item">
+          <a class="ok-nav-link" href="/blogs/">文章</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="ok-navbar-right-container">
+    <div class="button-group" id="buttonGroup">
+      {% if user.is_authenticated %}
+      <p style="white-space: nowrap;">欢迎, {{ user.username }}!</p>
+      <a href="/account/"><button class="white-blue-button" id="myAccountButton">我的账户</button></a>
+      {% else %}
+      <a href="/register/"><button class="blue-button" id="registerButton">注册/登录</button></a>
+      <a href="/login/"><button class="blue-button" id="registerButton">登录</button></a> 
+      <a href="/login_wechat/"><button class="blue-white-button" id="loginButton">微信注册（公众号）</button></a>
+      <a href="/register/phone/"><button class="blue-white-button" id="loginButton">手机注册/登录</button></a>
+      {% endif %}
+    </div>
+  </div>
+  <div id="cartbanner">
+      <svg width="56" height="37" viewBox="0 0 56 37" fill="none" xmlns="http://www.w3.org/2000/svg"
+        onclick="window.location.href = 'https://www.okeypackaging.com/cart/';">
+        <rect id="myRect" fill="" x="1" y="1" width="54" height="35" rx="4"></rect>
+        <path
+          d="M19 9.5C19.83 9.805 20.968 10.042 21.48 10.823C21.836 11.368 21.836 12.091 21.836 13.538V16.26C21.836 19.202 21.897 20.172 22.728 21.086C23.558 22 24.896 22 27.57 22H32.655C35.321 22 35.899 21.399 36.411 18.807C36.635 17.677 36.861 16.561 36.975 15.434C37.191 13.3 36.002 12.62 34.109 12.62H21.836M32.5 27.5C32.8978 27.5 33.2794 27.342 33.5607 27.0607C33.842 26.7794 34 26.3978 34 26C34 25.6022 33.842 25.2206 33.5607 24.9393C33.2794 24.658 32.8978 24.5 32.5 24.5C32.1022 24.5 31.7206 24.658 31.4393 24.9393C31.158 25.2206 31 25.6022 31 26C31 26.3978 31.158 26.7794 31.4393 27.0607C31.7206 27.342 32.1022 27.5 32.5 27.5ZM24.5 27.5C24.8978 27.5 25.2794 27.342 25.5607 27.0607C25.842 26.7794 26 26.3978 26 26C26 25.6022 25.842 25.2206 25.5607 24.9393C25.2794 24.658 24.8978 24.5 24.5 24.5C24.1022 24.5 23.7206 24.658 23.4393 24.9393C23.158 25.2206 23 25.6022 23 26C23 26.3978 23.158 26.7794 23.4393 27.0607C23.7206 27.342 24.1022 27.5 24.5 27.5Z"
+          stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+
+
+  </div>
+  </div>
+  </div>
+</nav> -->

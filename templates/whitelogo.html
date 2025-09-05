@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>LOGO反白 - Vectorizer.CN</title>
+    <link href="{% static 'css/pngtosvg.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <script src="{% static 'js/whitelogo.js' %}"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" media="screen" />
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+
+<script>
+    var imageHistoryData = JSON.parse("{{ imagehistory_json|escapejs }}")
+
+</script>
+<main>
+    <div id="message-container">
+
+    </div>
+
+    <div class="overlay" id="overlay">
+        <div class="loader"></div>
+    </div>
+    <div class="ok-home-block" style="margin-bottom: 50px;">
+        <h1 class="ok-front-main-title">LOGO反白，徽标类图片，黑白反转</h1>
+        <p class="ok-front-subtitle">反白设计，让设计师解放双手，一键完成，不限制使用次数.
+        </p>
+        <p class="ok-front-subtitle">一键即可完成，AI赋能，自主研发。免费使用，免费在线工具。</p>
+        <div class="ok-drag-image-upload" id="upload-image-btn">
+            <div class="drag-icon">
+                <img src="{% static 'img/homeImage/icons8-jpg-file-100.png' %}" alt="jpg icon" width="90px"
+                    class="animated-image">
+                <img src="{% static 'img/homeImage/icons8-png-100.png' %}" alt="png icon" width="90px"
+                    class="animated-image">
+                <!-- <img src="{% static 'img/svg/svg_icon.svg' %}" alt="svg icon" width="90px" class="animated-image"> -->
+            </div>
+            <span>点击进行反白处理</span>
+
+        </div>
+        <a id="downloadLink" style="display: none;"></a>
+        <div class="other-option-upload" id="other-option-upload" style="display: none;">
+            <span>服务升级，用更长的时间做更精确的运算</span>
+            <div class="upload-btn">请耐心等候，您可以稍作休息，一会再来查看结果</div>
+        </div>
+
+    </div>
+
+    <!-- {% if imagehistory %}
+    <div class="ok-home-block" id="allhistory"
+        style="border: 2px solid #000;border-radius: 10px;display: flex;flex-direction: column;width: 70%;margin: 0 auto;">
+        <h2 style="margin: 10px;" id="allhistoryh2">正在转换中...</h2>
+        {% for image in imagehistory %}
+        <div id="pngtosvghistory0" class="history-container">
+            <img src="{{ image.initial_img }}" alt="jpg icon" class="animated-image2" id="image0" style="width: 120px;">
+            <div id="status0" style="float: left;">上传完成..</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressbar0" style="width: 30%;"></div>
+            </div>
+            <div id="btn0" class="upload-btn">点击转换</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %} -->
+
+    <div class="ok-home-block" id="allhistory"
+        style="border: 2px solid #000;border-radius: 10px;display: flex;flex-direction: column;display: none;width: 70%;margin: 0 auto;">
+        <h2 style="display: none;margin: 10px;" id="allhistoryh2">正在处理中...</h2>
+
+    </div>
+    <div id="content">
+        <div class="container2 small" id="tool-box">
+            <div class="box-black" id="casestudy">
+                <h4>反白案例</h4>
+                <h3></h3>
+                <p>徽标类，LOGO，位图的反白设计，保留细节，轮廓清晰！</p>
+
+                <div id="result"></div>
+                <div class="seeinaction-container" id="upload-image-btn3">
+                    <div class="container">
+                        <img src="{% static 'img/homeImage/pixelopen_demo0.png' %}" alt="vectorizer Demo png"
+                            class="image left-image" id="result-left-image1">
+                        <img src="{% static 'img/homeImage/pixelopen_black_and_white_demo0.png' %}"
+                            alt="vectorizer Demo svg" class="image right-image" id="result-right-image1">
+                        <!-- <div class="overlay-text">click to convert</div> -->
+                        <div class="splitter"></div>
+                    </div>
+                </div>
+                <div class="image-row" id="image-row">
+                    <img src="{% static 'img/homeImage/pixelopen_demo1.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo2.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo3.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo4.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo5.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo6.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo7.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo8.png' %}" alt="vectorizer whitelogo demo">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/cookie.js' %}"></script>
+<script>
+    var userInfo = '{{ user.username }}';
+    if (userInfo) {
+        setCookie("is_login_okey", true, days = 365, path = '/')
+    }
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+
+<main>
+    <div id="message-container">
+
+    </div>
+    <div class="overlay" id="overlay">
+        <div class="loader"></div>
+    </div>
+    <div class="ok-home-block">
+        <h1 class="ok-front-main-title">png转svg/jpg转svg/位图转矢量/彩色图片转矢量</h1>
+        <p class="ok-front-subtitle">彩色位图转矢量图，让设计师解放双手，一键转换，低清转高清，不限制使用次数.
+        </p>
+        <p class="ok-front-subtitle">一键即可完成转换，AI赋能，自主研发。免费使用，免费在线工具。</p>
+        <div class="ok-drag-image-upload" id="upload-image-btn">
+            <div class="drag-icon">
+                <img src="{% static 'img/homeImage/icons8-jpg-file-100.png' %}" alt="jpg icon" width="90px"
+                    class="animated-image">
+                <img src="{% static 'img/homeImage/icons8-png-100.png' %}" alt="png icon" width="90px"
+                    class="animated-image">
+                <!-- <img src="{% static 'img/svg/svg_icon.svg' %}" alt="svg icon" width="90px" class="animated-image"> -->
+            </div>
+            <span>点击或拖拽图片转换</span>
+            <a id="downloadLink" style="display: none;"></a>
+        </div>
+
+        <div class="other-option-upload">
+            <span>或者可以</span>
+            <div class="upload-btn" id="upload-image-btn2">点击我选择图片转换成矢量</div>
+            <!-- <span>or press</span>
+      <div class="ctl-v">
+        <div class="ctl">CTRL</div>
+        <span>+</span>
+        <div class="v">V</div>
+      </div> -->
+        </div>
+    </div>
+
+    <div class="ok-home-block">
+        <h1 class="ok-front-main-title" id="ok-front-main-title">案例</h1>
+        <div id="result"></div>
+        <div class="seeinaction-container">
+            <h3>低清图片</h3>
+            <div class="container" id="upload-image-btn3">
+                <img src="{% static 'img/pngtosvg/demo.png' %}" alt="PNGTOSVG Demo png" class="image left-image"
+                    id="result-left-image">
+                <img src="{% static 'img/pngtosvg/demo.svg' %}" alt="PNGTOSVG Demo svg" class="image right-image"
+                    id="result-right-image">
+                <!-- <div class="overlay-text">click to convert</div> -->
+                <div class="splitter"></div>
+            </div>
+            <h3>SVG矢量图</h3>
+        </div>
+
+        <div class="image-row">
+            <img src="{% static 'img/pngtosvg/demo1.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo2.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo3.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo4.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo5.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo6.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo7.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo9.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo11.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo12.png' %}" alt="pixelopen pngtosvg demo">
+            <img src="{% static 'img/pngtosvg/demo13.png' %}" alt="pixelopen pngtosvg demo">
+        </div>
+    </div>
+
+    <div class="ok-home-block">
+        <h1 class="ok-front-main-title">矢量化是怎么实现的？</h1>
+        <div class="info-container">
+            <div class="info-row">
+                <img src="{% static 'img/homeImage/pick.png' %}" alt="pick icon" width="50%" class="info-image">
+                <h3>选择</h3>
+                <div style="  padding: 30px;">
+                    <p class="info-cell">选择您的JPG或PNG的图片，点击上传或者拖拽到上传框内。</p>
+                    <p class="info-cell">
+                        位图图像、漫画人物、低清图片、LOGO（如JPEG和PNG）都可以上传给AI引擎处理，得到可自由缩放的矢量图。并且不限制次数</p>
+                    <p class="info-cell">
+                        <a id="upload-image-btn4" style="color:rgb(69, 170, 236)">选择您的图片</a>然后您就可以获得矢量图。
+                    </p>
+                </div>
+            </div>
+            <div class="info-row">
+                <img src="{% static 'img/homeImage/process.png' %}" alt="process icon" width="50%" class="info-image">
+                <h3>AI大模型处理</h3>
+                <div style="  padding: 30px;">
+                    <p class="info-cell">我们通过AI模型分析、并使用AIGC大模型将位图图像从像素转换为矢量。</p>
+                    <p class="info-cell">
+                        矢量化后获得的svg图像不会丢失其详细特征，可以用于印刷、设计等等！</p>
+                </div>
+            </div>
+            <div class="info-row">
+                <img src="{% static 'img/homeImage/download.png' %}" alt="download icon" width="50%" class="info-image">
+                <h3>下载</h3>
+                <div style="  padding: 30px;">
+                    <p class="info-cell">转换成功后，图片上会显示“下载”的按钮，点击即可下载。
+                    </p>
+                    <p class="info-cell">
+                        目前我们支持下载SVG格式的矢量。</p>
+                    <p class="info-cell"><a href="/register/">成为我们的用户</a>目前有新年优惠哦。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ok-home-block" style="background-color: #d6d6d6;">
+        <h1 class="ok-front-main-title">Full Featured</h1>
+        {% for chunk in full_features %}
+        <div class="ok-home-block" style="background-color: #d6d6d6;">
+
+            <div class="info-container">
+                {% for feature in chunk %}
+                <div class="info-column">
+                    <div style="padding: 30px;">
+                        <p class="info-cell" style="font-weight: 500;text-align: left;">{{ feature.feature_title }}
+                        </p>
+                        <p class="info-cell" style="text-align: left;">
+                            {{ feature.feature_content|safe }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="ok-home-block" style="background-color: #d6d6d6;">
+        <h1 class="ok-front-main-title">FAQ</h1>
+        {% for faq in faqs %}
+        <div class="ok-home-block" style="background-color: #d6d6d6;">
+            <div class="info-column-faq">
+                {% for qa in faq %}
+                <div class="two-column">
+                    <p class="info-cell" style="font-weight: 500;  text-align: left;">{{ qa.question }}</p>
+                    <p class="info-cell" style="text-align: left;">{{ qa.answer|safe }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="ok-home-block" style="margin-top: 40px;margin-bottom: 40px;">
+        <h2>如果您还没体验过丝滑的矢量转换工具</h2>
+        <p>那您一定要试试 <strong>Vectorizer.cn</strong> 带来的便捷！高精度转换，无限次使用。免费使用哦！</p>
+        <a href="/subscribe/" class="cta-button"
+            style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px; font-size: 16px; font-weight: bold;">立即体验</a>
+    </div>
+
+</main>
+
+{% endblock content %}

@@ -1,0 +1,127 @@
+.ok-footer {
+    background-color: #fff;
+    color: black;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    height: 150px;
+    box-sizing: border-box;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.ok-footer-text {
+    font-size: 20px;
+    margin: 5px;
+    color: #0056b3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.ok-footer-text:hover {
+    color: #000000;
+}
+
+.ok-footer-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.ok-footer-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.ok-icons i {
+    font-size: 24px;
+    margin: 0 5px;
+    color: #888;
+}
+
+.ok-footer-section ul {
+    list-style: none;
+    padding: 0;
+
+}
+
+.ok-footer-section ul li {
+    margin: 5px 0;
+}
+
+.ok-footer-section ul li a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ok-footer-section ul li a:hover {
+    color: #ff9922;
+}
+
+.ok-footer-section h4 {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.ok-footer-social-container {
+
+    padding-right: 20px;
+}
+
+g:hover path {
+    fill: #ff9922;
+    /* 鼠标悬停时的填充色 */
+}
+
+@media (max-width: 990px) {
+    .ok-footer {
+        flex-direction: column;
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        box-sizing: border-box;
+        flex-direction: row;
+        width: 100%;
+    }
+
+
+
+    .ok-footer-section ul li a {
+        justify-content: center;
+    }
+
+}
+
+@media (min-width:991px) {
+    .ok-footer-section {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .ok-footer>* {
+
+        /* 假设第一个元素是你想要35%宽度的元素 */
+        &:first-child {
+            width: 40%;
+            /* 或者使用 flex: 0 0 35%; */
+            /* 其他样式 */
+        }
+
+        /* 剩余的元素平分剩余的空间 */
+        &:not(:first-child) {
+            flex-grow: 1;
+            /* 平分剩余空间 */
+            /* 其他样式 */
+        }
+    }
+
+
+}

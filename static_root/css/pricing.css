@@ -1,0 +1,442 @@
+.ok-home-block {
+    width: 100%;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ok-front-main-title {
+    margin-top: 3%;
+    font-size: 56px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.ok-front-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+
+
+.overlay-text {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.ok-drag-image-upload {
+    border: 2px dashed #4343f7;
+    border-radius: 10px;
+    width: 990px;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin-top: 2%;
+}
+
+.ok-drag-image-upload span {
+    color: #4343f7;
+    font-size: 36px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.drag-icon {
+    margin-right: 10%;
+}
+
+.info-image {
+    padding: 20px;
+
+}
+
+.animated-image {
+    transition: transform 0.3s ease;
+    background: transparent;
+
+}
+
+
+.animated-image:nth-child(1) {
+    transition: transform 0.3s ease;
+}
+
+.animated-image:nth-child(2) {
+    transition: transform 0.3s ease;
+    /* 稍微延迟第二个图像的动画 */
+}
+
+/* 
+.animated-image:nth-child(3) {
+    transition: transform 0.3s ease;
+    /* 稍微延迟第三个图像的动画 */
+/* } */
+
+.ok-drag-image-upload:hover .animated-image:nth-child(1) {
+    transform: rotate(-15deg) scale(1.2);
+    /* 旋转并放大第一个图像 */
+}
+
+.ok-drag-image-upload:hover .animated-image:nth-child(2) {
+    transform: rotate(15deg) scale(1.2);
+    /* 旋转并放大第二个图像，角度和缩放比例不同 */
+}
+
+/* .ok-drag-image-upload:hover .animated-image:nth-child(3) {
+    transform: rotate(20deg) scale(1.08);
+    /* 旋转并放大第三个图像，角度和缩放比例又不同 */
+/* } */
+
+.other-option-upload {
+    display: flex;
+    flex-direction: row;
+    /* 默认就是row，但写上更明确 */
+    align-items: center;
+    justify-content: center;
+    /* 如果需要子元素水平居中 */
+    text-align: center;
+    /* 注意：这会影响内部inline或inline-block元素的文本对齐，但flex子项通常不受此影响 */
+    padding: 20px;
+    margin-bottom: 2%;
+}
+
+.other-option-upload span,
+.upload-btn,
+.ctl-v {
+    margin: 0 10px;
+    /* 增加子元素之间的间距 */
+}
+
+.upload-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4343f7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+    background-color: #000;
+}
+
+.ctl-v {
+    display: flex;
+    align-items: center;
+}
+
+.ctl,
+.v {
+    font-size: 18px;
+    /* 稍微调小一点，因为现在是横向布局 */
+    font-weight: bold;
+    color: #007bff;
+    margin: 0 5px;
+    /* 快捷键之间的间距 */
+}
+
+
+.container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+    margin: 2%;
+    background-color: #e2e2e2;
+    border-radius: 20px;
+    touch-action: none;
+}
+
+
+.image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    padding: 0;
+    object-fit: contain;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #333;
+}
+
+.left-image {
+    clip-path: inset(0 50% 0 0);
+    transition: transform 1s ease-in-out;
+}
+
+.right-image {
+    clip-path: inset(0 0 0 50%);
+    transition: transform 1s ease-in-out;
+}
+
+.left-image.zoomed,
+.right-image.zoomed {
+    transform: scale(2);
+    /* 放大1.5倍 */
+}
+
+.splitter {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 5px;
+    height: 100%;
+    background-color: black;
+    cursor: col-resize;
+    z-index: 2;
+    /* 确保在图片之上 */
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+.seeinaction-container {
+    flex-direction: row;
+    display: flex;
+    /* 使用Flexbox布局 */
+    justify-content: space-between;
+    /* 子元素之间的间距（可选） */
+    align-items: center;
+    width: 60%;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-row {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 5%;
+    /* 外部边距为5% */
+    box-sizing: border-box;
+    /* 确保边距和填充不会增加容器宽度 */
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.image-row img {
+    background-color: #e2e2e2;
+    flex: 0 0 calc(10% - 10px);
+    /* 每张图片占据20%的宽度，减去间隔 */
+    margin-right: 10px;
+    /* 图片之间的间隔 */
+    border-radius: 10px;
+    /* 圆角 */
+    transition: transform 0.3s ease, margin-right 0.3s ease;
+    /* 平滑过渡 */
+    max-width: calc(10% - 10px);
+    /* 确保图片不会超出分配的宽度 */
+    padding: 10px;
+    border: 1px solid #fff;
+}
+
+.image-row img:hover {
+    transform: scale(1.3);
+    /* 放大 */
+    margin-right: 20px;
+    /* 减小间隔以模拟挤开效果 */
+    z-index: 10;
+    /* 确保放大的图片在其他图片之上 */
+}
+
+/* 可选的：为最后一个图片设置右边距为0，以避免不必要的滚动条 */
+.image-row img:last-child {
+    margin-right: 0;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.info-row {
+    display: flex;
+    flex: 1;
+    /* 使每一行均分容器的高度 */
+    flex-direction: column;
+    /* 行内子元素垂直排列 */
+
+    align-items: center;
+    /* 行内子元素在水平方向上居中对齐（可选，但通常用于水平子元素） */
+    text-align: left;
+}
+
+.info-column {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.info-column-faq {
+    display: flex;
+    flex-direction: row;
+    /* 将子项排列为水平两列 */
+    justify-content: center;
+    /* 使两列在水平方向上居中 */
+    width: 100%;
+    /* 或指定一个具体的宽度 */
+    max-width: 900px;
+    /* 可选：限制最大宽度以适应不同屏幕尺寸 */
+}
+
+.two-column {
+    /* 可根据需要为每列添加样式，如宽度、内边距等 */
+    flex: 1;
+    /* 使两列平分可用空间 */
+    padding: 10px;
+    /* 为每列添加内边距 */
+    box-sizing: border-box;
+    /* 确保内边距和边框不影响元素的总宽度 */
+}
+
+.info-cell {
+    line-height: 210%;
+    font-size: 20px;
+    font-weight: 400;
+
+}
+
+.ok-home-block h1 {
+    font-size: 50px;
+}
+
+
+.styled-table {
+    width: 100%;
+    /* 可选：设置表格宽度 */
+    border-collapse: collapse;
+    /* 合并边框 */
+    background-color: #ffffff;
+    /* 白色背景 */
+}
+
+.styled-table th,
+.styled-table td {
+    border: 1px solid #dddddd;
+    /* 单元格边框颜色 */
+    padding: 8px;
+    /* 单元格内间隙 */
+    text-align: left;
+    /* 可选：文本对齐方式 */
+}
+
+.styled-table th {
+    background-color: #f2f2f2;
+    /* 表头背景颜色，可选 */
+}
+
+/* 可选：为表头添加一些额外的样式，比如加粗 */
+.styled-table th {
+    font-weight: bold;
+}
+
+
+/* 响应式设计：当屏幕较小时，调整图片大小 */
+@media (max-width: 768px) {
+    .image-row img {
+        flex: 0 0 calc(33.333% - 10px);
+        /* 每行3张图片 */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-row img {
+        flex: 0 0 calc(50% - 10px);
+        /* 每行2张图片 */
+    }
+}
+
+/* ##################################### */
+@media (max-width: 990px) {
+
+    .drag-icon,
+    .ok-drag-image-upload {
+        display: none;
+    }
+
+    .other-option-upload span,
+    .other-option-upload .ctl-v {
+        display: none;
+    }
+
+    .seeinaction-container {
+        width: 100%;
+    }
+
+    .seeinaction-container .container {
+        width: 100%;
+    }
+
+    .seeinaction-container h3 {
+        display: none;
+    }
+
+    .image-row {
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .image-row img {
+        background-color: #e2e2e2;
+        flex: 0 0 calc(50% - 10px);
+        /* 每张图片占据20%的宽度，减去间隔 */
+        margin-right: 10px;
+        /* 图片之间的间隔 */
+        border-radius: 10px;
+        /* 圆角 */
+        transition: transform 0.3s ease, margin-right 0.3s ease;
+        /* 平滑过渡 */
+        max-width: calc(30% - 10px);
+    }
+
+    .info-container {
+        width: 100%;
+        flex-direction: column;
+    }
+
+}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <link href="{% static 'css/product_list.css' %}" rel="stylesheet">
+</head>
+
+<main>
+    <script src="{% static 'js/product_list.js' %}"></script>
+    <nav aria-label="breadcrumb">
+        <ol class="ok-breadcrumb" style="background-color: #F4F0ED;">
+            <li><a href="/" style="color: black;">Home &ensp;/&ensp;</a></li>
+            <li style="color: #ff9922;" aria-current="page"> Product</li>
+        </ol>
+    </nav>
+    <div class="ok-home-block">
+        <div class="ok-home-left-container">
+            {% if category_data.ok_product_category_show_name %}
+            <h1 class="ok-home-slogan-title">{{ category_data.ok_product_category_show_name }}</h1>
+            <p class="ok-home-slgoan-text">{{ category_data.ok_product_category_description }}</p>
+            {% else %}
+            <h1 class="ok-home-slogan-title">Okeypackaging Product List</h1>
+            <p class="ok-home-slogan-text">Design and order a wide range of fully customisable packaging products for
+                your brand.</p>
+            {% endif %}
+        </div>
+        <div class="ok-home-right-container">
+            {% if category_data.ok_product_image.url %}
+            <img src="{{ category_data.ok_product_image.url }}" alt="{{ category_data.ok_product_image_alt }}"
+                width="400px">
+            {% else %}
+            <img src="{% static 'img/logo/custom food packaging design from okeypackaging.png' %}"
+                alt="Okeypackaging Product List for Restaurant" width="400px">
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div class="ok-productlist-all-container">
+        <div class="ok-productlist-category">
+            <ul>
+                <li id="product_category_all">All</li>
+                <li id="product_category_recommend">Recommended</li>
+                <li id="product_category_food">Food</li>
+                <li id="product_category_drink">Drink</li>
+                <li id="product_category_bag">Bag</li>
+                <li id="product_category_utensils">Utensils</li>
+                <li id="product_category_other">Other</li>
+            </ul>
+        </div>
+        <div class="ok-productlist-block">
+            {% for product in product_list %}
+            <div class="ok-productlist-container" id="{{ product.ok_product_category }}">
+                <a href="/product/{{ product.ok_product_slug }}/">
+                    <div>
+                        {% if product.ok_product_image.url %}
+                        <img class="ok-productlist-image" src="{{ product.ok_product_image.url }}"
+                            alt="{{product.ok_product_image_alt}}" id="{{ product.id }}" />
+                        {%endif %}
+                    </div>
+                </a>
+                <div class="ok-productlist-gallery" id="{{ product.id }}">
+                    <img class="ok-productlist-gallery-image" src="{{ product.ok_product_image.url }}"
+                        alt="{{product.ok_product_image_alt}}" />
+                    {% for product_variation in product_gallery %}
+                    {% if product_variation.id == product.id and product_variation.gallery.url %}
+                    <img class="ok-productlist-gallery-image" src="{{ product_variation.gallery.url }}"
+                        alt="{{product_variation.gallery_alt}}" />
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                <a href="{{ product.ok_product_slug }}">
+                    <div class="ok-productlist-title">{{ product.ok_product_name }}</div>
+                </a>
+                <div class="price-moq">
+                    <div class="ok-productlist-price">From &#163; {{ product.ok_product_normal_price }}/unit |
+                    </div>
+                    <div class="ok-productlist-price"> &ensp;MOQ: {{ product.ok_product_moq }}</div>
+                </div>
+
+                {% for product_tag in product.ok_product_tag %}
+                <div class="ok-productlist-tag">
+                    {{ product_tag }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock content %}

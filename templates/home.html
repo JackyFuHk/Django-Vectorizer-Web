@@ -1,0 +1,435 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="screen" />
+<link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen" />
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}" media="screen" />
+<link href="{% static 'css/pngtosvg.css' %}" rel="stylesheet">
+
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/cookie.js' %}"></script>
+<script>
+    var userInfo = '{{ user.username }}';
+    if (userInfo) {
+        setCookie("is_login_okey", true, days = 365, path = '/')
+    }
+    var designernum = parseInt('{{ designnum }}', 10)
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+
+<main>
+    <div class="overlay" id="overlay">
+        <div class="loader"></div>
+    </div>
+    <div id="message-container">
+
+    </div>
+    <div id="content">
+        <div class="black-box">
+            <div class="container2 text-center">
+                <h1 style="color: #000">位图转<span>矢量</span>矢量化工具<br />
+                    <span>PNG转SVG</span>/<span>JPG转SVG</span>/<span>位图矢量化</span>
+                </h1>
+                <div class="large-text"> 
+                    <p>我们致力于研发位图转矢量工具！<a style="color:#0f4bf1" href="/register/" style="text-decoration: none;">登录</a>
+                    </p>
+                </div>
+                <a id="read" class="btn" style="font-size: 22px;"><span>点击上传图片转矢量</span></a>
+                <!-- <div class="stories">
+                    <img src="{% static 'img/newhome/customers2x.png' %}" alt="Happy clients">
+                    <p>
+                        <strong>C头、不要熬夜、卟意外 和另外 等 <span id="designernum">0</span> 位设计师</strong> 今天已准时下班了，已参与不加班打卡。
+                        <a id="offwork-btn">点击告诉我您也准时下班了</a>
+                    </p>
+                </div> -->
+            </div>
+        </div>
+
+
+
+        <!-- <h4>为什么需要AI工具？</h4>
+            <h2>从一个<span> 996 每天加班熬夜的设计师 </span>到准时下班的伟大设计师
+            </h2>
+            <div class="info-box">
+                <p>2024年，我们创立了Vectorizer，这是一家专门研究位图、徽标转矢量图为重点，AI图像工具为辅的科技公司。致力于帮助设计师减轻工作负担！
+                </p>
+                <p>到现在， 我们已经成功帮助数十位优秀的设计师准点下班。实现生活-工作-平衡。
+                </p>
+            </div> -->
+
+        <!-- <div class="other-option-upload" id="other-option-upload" style="display: none;">
+            <span>矢量化服务升级，可以一次多上传几张图片哦</span>
+            <div class="upload-btn">请耐心等候，您可以稍作休息，一会再来查看结果</div>
+        </div> -->
+        <a id="downloadLink" style="display: none;"></a>
+        <div class="ok-home-block" id="allhistory" style="display: flex;flex-direction: column;display: none;width: 70%;margin: 0 auto;border: 2px dashed #4343f7;
+border-radius: 10px;justify-content: center;align-items: center;text-align: center;  margin-bottom: 50px;">
+            <h2 style="display: none;margin: 10px;" id="allhistoryh2">位图转矢量进行中...</h2>
+
+        </div>
+        <div class="container2 medium">
+
+
+            <div class="container2 small" id="tool-box">
+                <div class="box-black" id="casestudy">
+                    <h4>矢量化案例</h4>
+                    <h3></h3>
+                    <p>位图是以像素为单位的图像，由许多像素点组成。而矢量图形则是由一些数学函数绘制出来的，拥有更高的精度，可以实现更加精细的图像。</p>
+
+                    <div id="result"></div>
+                    <div class="seeinaction-container" id="upload-image-btn3">
+                        <div class="container">
+                            <img src="{% static 'img/pngtosvg/demo.png' %}" alt="vectorizer Demo png"
+                                class="image left-image" id="result-left-image1">
+                            <img src="{% static 'img/pngtosvg/demo.svg' %}" alt="vectorizer Demo svg"
+                                class="image right-image" id="result-right-image1">
+                            <!-- <div class="overlay-text">click to convert</div> -->
+                            <div class="splitter"></div>
+                        </div>
+                    </div>
+                    <div class="image-row" id="image-row">
+                        <img src="{% static 'img/pngtosvg/demo1.png' %}" alt="vectorizer pngtosvg demo">
+                        <img src="{% static 'img/pngtosvg/demo2.png' %}" alt="vectorizer pngtosvg demo">
+                        <img src="{% static 'img/pngtosvg/demo3.png' %}" alt="vectorizer pngtosvg demo">
+                        <img src="{% static 'img/pngtosvg/demo4.png' %}" alt="vectorizer pngtosvg demo">
+                        <img src="{% static 'img/pngtosvg/demo5.png' %}" alt="vectorizer pngtosvg demo">
+                        <img src="{% static 'img/pngtosvg/demo6.png' %}" alt="vectorizer pngtosvg demo">
+                        <img src="{% static 'img/pngtosvg/demo7.png' %}" alt="vectorizer pngtosvg demo">
+                        <img src="{% static 'img/pngtosvg/demo9.png' %}" alt="vectorizer pngtosvg demo">
+                    </div>
+                </div>
+                <div class="vec-container">
+                    <h2 class="vec-header">如何将JPG、PNG图像转换成SVG矢量图像</h2>
+                    <div class="vec-content">
+                        <div class="vec-block">
+                            <img src="{% static 'img/pngtosvg/demodemo.png' %}" alt="vectorzer矢量化示例图">
+                            <p>1. 上传位图图像，AI工具会自动判断使用AI算法，并为您描摹图像。</p>
+                        </div>
+
+                        <div class="vec-block">
+                            <img src="{% static 'img/pngtosvg/demodemo5.png' %}" alt="vectorzer矢量化示例图">
+                            <p>2. 矢量化图像，AI工具跟踪图像路径</p>
+                        </div>
+
+                        <div class="vec-block">
+                            <img src="{% static 'img/pngtosvg/demodemo3.png' %}" alt="vectorzer矢量化示例图">
+                            <p>3. 完成后可点击下载您的SVG矢量图像</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="box-black" id="casestudy">
+                <h4>反白案例</h4>
+                <h3></h3>
+                <p>反白设计通常指的是将标志、文字或图形的颜色进行反转处理，使得原本的深色部分变为白色（或浅色），而原本的白色（或浅色）部分变为深色。</p>
+
+                <div id="result"></div>
+                <div class="seeinaction-container" id="upload-image-btn4">
+                    <div class="container4">
+                        <img src="{% static 'img/homeImage/pixelopen_demo0.png' %}" alt="PNGTOSVG Demo png"
+                            class="image left-image2" id="result-left-image2">
+                        <img src="{% static 'img/homeImage/pixelopen_black_and_white_demo0.png' %}"
+                            alt="PNGTOSVG Demo svg" class="image right-image2" id="result-right-image2">
+                        <div class="overlay-text">click to convert</div>
+                        <div class="splitter2"></div>
+                    </div>
+
+                </div>
+                <div class="image-row" id="image-row2">
+                    <img src="{% static 'img/homeImage/pixelopen_demo1.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo2.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo3.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo4.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo5.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo6.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo7.png' %}" alt="vectorizer whitelogo demo">
+                    <img src="{% static 'img/homeImage/pixelopen_demo8.png' %}" alt="vectorizer whitelogo demo">
+                </div>
+            </div> -->
+                <div>
+                    <div class="vec-title">什么是图像矢量化？</div>
+                    <div class="vec-text">图像矢量化是将由像素组成的光栅图像转换为由线条、曲线和其他几何形状组成的矢量图像的复杂计算过程。这种转换使得图像可以在放大或缩小时保持质量不变。</div>
+
+                    <div class="vec-section-title">矢量图像的应用领域</div>
+                    <div class="vec-text">矢量图像主要用于视觉设计。例如，如果一个徽标图像在放大时显示出像素化问题，可以通过转换为矢量图像来解决这个问题，保证图像在不同尺寸下保持清晰度。</div>
+                    <div class="vec-text">矢量图像也被广泛应用于特定工具和行业，如绘图仪、软件控制的机床等。它们特别适合用于广告制品（如纪念品、T恤和徽章）、塑料制品等的生产。</div>
+
+                    <div class="vec-section-title">艺术家和工程师的支持</div>
+                    <div class="vec-text">计算机辅助设计系统利用矢量图形格式处理图纸、平面图和技术文件，为艺术家和工程师提供了更高效的工作方式。</div>
+                    <div class="vec-text">现代艺术家常常选择使用矢量图像进行草图绘制和创作，将其视为创意灵感的重要工具。</div>
+
+                    <div class="vec-section-title">Vectorizer的优势</div>
+                    <ul class="vec-list">
+                        <li class="vec-text"><strong>免费使用</strong>：Vectorizer是一款完全免费的在线服务，无需注册或安装软件即可使用，非常便捷。</li>
+                        <li class="vec-text"><strong>高质量输出</strong>：生成的矢量图像达到了平面设计行业的高标准，与付费服务相媲美。</li>
+                        <li class="vec-text"><strong>易于操作</strong>：无需专业知识或昂贵的图形编辑软件（如Corel Draw或Adobe
+                            Illustrator），任何人都可以轻松使用。
+                        </li>
+                        <li class="vec-text"><strong>快速生成</strong>：只需良好的互联网连接，上传图片后即可在几秒钟内完成矢量化转换（根据图片大小和复杂性而定）。</li>
+                        <li class="vec-text"><strong>跨设备使用</strong>：通过手机或电脑访问Vectorizer网站，随时创建和下载高质量的矢量图像。</li>
+                    </ul>
+
+                    <div class="vec-text">这样，您只需一台连接互联网的设备，便可利用Vectorizer轻松处理和生成高质量的矢量图像。</div>
+                    <!-- <h2>如果您想要:</h2>
+                <div class="border-line">&nbsp;</div>
+                <ul>
+                    <li><span>提升设计效果</span> 在你的工作中。</li>
+                    <li><span>准时下班</span>而不再加班 。</li>
+                    <li><span>多样的AI免费工具</span>供您使用。</li>
+                </ul> -->
+                    <!-- DELETE IF NO GOOD -->
+                    <!-- <div class="border-line">&nbsp;</div>
+                <h4>强大的AI工具分别是：</h4>
+                <h2>引爆你设计效率的 <span> 完美效果</span></h2> -->
+
+                    <!-- <div class="product-grid"> -->
+                    <!-- <a href="/tool/pngtosvg/" target="_blank" class="product-tile">
+                        <img src="https://www.conversion.care/wp-content/uploads/2023/10/bf-icon-300x300.webp"
+                            alt="Black Friday Checklist Thumbnail">
+                        <h4><strong>AI位图转矢量</strong></h4>
+                    </a>
+                    <a href="/tool/removebg/" target="_blank" class="product-tile">
+                        <img src="https://www.conversion.care/wp-content/uploads/2023/02/E-commerce-checklist-gsheets-300x300.png"
+                            alt="E-commerce Checklist Thumbnail">
+                        <h4><strong>AI图片去除背景</strong></h4>
+                    </a>
+                    <a href="/tool/upscale/" target="_blank" class="product-tile">
+                        <img src="https://www.conversion.care/wp-content/uploads/2024/09/Screenshot-2024-10-01-at-15.26.03-1-e1728289210970-150x150.png"
+                            alt="Facebook Ad Templates Thumbnail">
+                        <h4><strong>AI图片无损放大</strong></h4>
+                    </a>
+                    <a href="/tool/outline/" target="_blank" class="product-tile">
+                        <img src="https://www.conversion.care/wp-content/uploads/2024/10/ecom-stores.png"
+                            alt="100+ Product Page Screenshots Thumbnail">
+                        <h4><strong>AI自动叠底色工具</strong></h4>
+                    </a> -->
+                    <!-- <a href="/tool/whitelogo/" target="_blank" class="product-tile">
+                        <img src="https://www.conversion.care/wp-content/uploads/2023/04/envelope_2709.png"
+                            alt="E-mail Checklist Thumbnail">
+                        <h4><strong>AI反白反色神器</strong></h4>
+                    </a> -->
+
+                    <!-- <a href="/tool/pickpattern/" target="_blank" class="product-tile">
+                        <img src="https://www.conversion.care/wp-content/uploads/2023/02/SEO-checklist-300x300.png"
+                            alt="SEO Checklist Thumbnail">
+                        <h4><strong>AI抠图工具(测试版)</strong></h4>
+                    </a> -->
+
+                    <!-- </div> -->
+
+                </div>
+                <div class="vec-container" style="margin-top: 50px;">
+                    <h2 class="vec-header">拥有自主研发的核心技术</h2>
+                    <div class="vec-content">
+                        <div class="vec-block">
+                            <img src="{% static 'img/pngtosvg/demodemo4.png' %}" alt="vectorzer矢量化示例图">
+                            <p style="text-align: left;font-size: 14px;">VectorizerCN
+                                会自动分析您的图像，智能检测最佳矢量化设置，并以全色呈现底层形状。使用起来十分简单——只需上传图像，便可快速查看结果！<br>
+                                当然，您也可以手动调整设置。VectorizerCN 提供直观、易理解的参数，让您不仅能依靠机器智能，还能轻松进行个性化优化。</p>
+                        </div>
+
+                        <div class="vec-block">
+                            <img src="{% static 'img/pngtosvg/demodemo6.png' %}" alt="vectorzer矢量化示例图">
+                            <p style="text-align: left; font-size: 14px;">VectorizerCN
+                                精确捕捉图像中的每一处细节，精准切割边缘像素，忠实重现原始设计意图。<br>
+                                这一技术使我们能够提取其他工具可能忽略的微小细节，将导入图像的精细度提升至极致。<br>
+                                许多客户的徽标通常以 PNG 格式提供，但打印时可能需要转换为 SVG。传统手动重绘可能耗费数小时，而借助
+                                VectorizerCN，您往往只需几秒钟即可获得高质量的矢量化结果。</p>
+                        </div>
+
+                        <div class="vec-block">
+                            <img src="{% static 'img/pngtosvg/demodemo2.png' %}" alt="vectorzer矢量化示例图">
+                            <p style="text-align: left;font-size: 14px;">如果您曾使用过其他自动描摹工具，可能会发现它们往往使用过多的节点，并且位置排列混乱。<br>
+                                VectorizerCN 则完全不同，它智能优化节点数量，并精准放置在最佳位置，确保结果更加流畅自然。<br>
+                                这样不仅提升了可用性，还有效减少了文件大小，让您的矢量图更加高效易用。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="fpMainSection white-panel" style="margin-top: 30px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h2 id="位图图像与矢量图像" class="h1">
+                                位图图像与矢量图像
+                                <br>
+                                <small>
+                                    JPG、PNG、GIF 图像和 SVG、EPS、PDF、AI、DXF 文件有什么区别？
+                                </small>
+                            </h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>
+                                    矢量图像包括圆形、长方形、线条和曲线等形状，而位图图像（亦称为<i>光栅</i>图像）则包括像素网格。<i>矢量化</i>或<i>描摹</i>是将位图图像作为矢量图像重新绘制的程序。
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>
+                                    矢量图像中的形状允许计算机完成位图图像不允许的任务，例如将图像缩放成任何大小，而不使质量遭受损失，并使用图像进行剪切、缝合、绘画和激光雕刻等操作。
+                                </p>
+                            </div>
+                        </div>
+
+                        <p style="margin-top: 20px;" class="r">
+                            <a href="/">
+                                了解有关矢量图像的进一步详情»
+                            </a>
+                        </p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>位图图像文件格式</h2>
+                                <p>有多种不同的位图格式。其中一些最常见的格式是：JPEG、PNG、GIF、BMP 和 TIFF。这些格式大体上可分为两类： </p>
+                                <dl>
+                                    <dt>有损格式</dt>
+                                    <dd>
+                                        <p>
+                                            这些格式有较小的文件大小，但不会储存完美的图像拷贝。 这些格式最适合准确性不重要的照片和其他图像。 它们也常用于网络，以节约带宽。
+                                        </p>
+                                    </dd>
+                                    <dt>
+                                        <a href="/">JPEG/JPG</a>
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            最广泛使用的图像格式之一。 这个格式有很好的压缩特点和功能，用户可指定自己希望使用的压缩水平，为了文件大小放弃一些逼真度。
+                                        </p>
+                                        <p>我们建议不要为光栅化矢量艺术品使用 JPEG 文件，因为压缩工艺会极大地降低边缘附近的图像质量。 </p>
+                                    </dd>
+                                    <dt>无损格式</dt>
+                                    <dd>
+                                        <p>
+                                            这些格式精确地逐个储存图像像素，但需要更多空间。 更适合徽标之类的图像。
+                                        </p>
+                                    </dd>
+                                    <dt id="png">
+                                        <a href="/">PNG</a>
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            最佳无损图像格式称为 PNG（便携式网络图形）。这种格式受到网络浏览器和图像查看器/编辑器的广泛支持。
+                                        </p>
+                                        <p class="i"> Vector Magic 建议在将徽标作为位图储存时使用 PNG 格式。 </p>
+                                    </dd>
+                                    <dt>
+                                        <a href="/">BMP</a>
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            实际上有几种 BMP 格式（BitMaP）。Windows 和 Macintosh 都有自己的格式，均称为
+                                            BMP。大多数现代图像编辑工具能够读取这两种格式。
+                                        </p>
+                                        <p>在任何情况下都应当尽量避免 BMP 的所有变体，因为这些变体几乎不用或者完全不用压缩功能，因此会产生不必要的大文件。 </p>
+                                    </dd>
+                                </dl>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <h2>矢量图像文件格式</h2>
+                                <dl>
+                                    <dt>
+                                        <a href="/">EPS</a>
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            Adobe 的 EPS 格式（Encapsulated
+                                            PostScript）可能是最常用的矢量图像格式。这是印刷行业的标准交换格式。该格式作为导出格式受到广泛支持，但由于完整格式规格的复杂性，并非所有声称支持
+                                            EPS 的程序都能导入该格式的所有变体。Adobe Illustrator 和 CorelDRAW 的较新版本对读取和写入 EPS
+                                            有很好的支持。Ghostview 能够很好地读取 EPS 格式，但没有任何编辑功能。Inkscape 只能导出 EPS 格式。
+                                        </p>
+                                    </dd>
+                                    <dt>
+                                        <a href="/">SVG</a>
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            W3C 标准矢量图像格式称为 SVG（可缩放矢量图形）。Inkscape 以及 Adobe Illustrator 和 CorelDRAW
+                                            的较新版本对读取和写入 SVG 有很好的支持。可在 <a href="/">SVG
+                                                官网</a>查阅有关 SVG 格式的进一步信息。
+                                        </p>
+                                    </dd>
+                                    <dt>
+                                        <a href="/">PDF</a>
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            Adobe 的 PDF
+                                            格式（便携式文件格式）作为一般用途不依赖平台的文件格式被极为广泛地使用。尽管该格式并非专门用于此类用途，该格式也是一种很好的矢量图像格式。Adobe
+                                            免费提供 <a rel="nofollow" href="/">Acrobat PDF
+                                                Reader</a>，但出售创建 PDF 文件要求的工具（执行相同任务的第三方工具也用于出售）。此类工具可与任何能够打印的程序合用。读取和编辑
+                                            PDF 文件的支持很有限。
+                                        </p>
+                                    </dd>
+                                    <dt>
+                                        <a href="/">AI</a>
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            Adobe Illustrator 的原生格式是 AI 格式（Adobe Illustrator Artwork），此为较早的 EPS
+                                            格式的修改版本。AI 格式得到较为广泛的支持，但没有 EPS 格式普及，大多数能读取 AI 格式的程序也能读取 EPS 格式。
+                                        </p>
+                                    </dd>
+                                    <dt>
+                                        <a href="/">DXF</a>
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            绘制交换格式。Autodesk 提供的一种 CAD 格式，由很多不同供应商提供的 CAD 工具使用。一些程序在读取带曲线的 DXF
+                                            文件时会遇到困难，因此桌面版本支持线条 + 曲线以及单纯线条的输出模式。
+                                        </p>
+                                    </dd>
+                                </dl>
+                                <p> 有无数种其他矢量格式：CDR 是 CorelDRAW 的原生格式，XAR 是 Xara Xtreme 的原生格式，这只是其中的两个例子。 </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 c">
+                                <h3>VectorizerCN 可将 JPG、PNG、BMP、GIF 图像任意转换成 SVG</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container2 small">
+
+            <div class="box-white box-second">
+                <h2>所以，如果你</h2>
+                <ul>
+                    <li><span>厌倦了枯燥的设计工作</span><br />不希望每天重复过。</li>
+                    <li><span>想要提升你的工作效率</span> <br />基于AI智能化的工具驱动。</li>
+                    <li><span>正在寻找一个能帮助到您设计工作的网站，</span> <br /> 不再熬夜加班。
+                    </li>
+                </ul>
+                <a id="read2" class="btn"><span> 把AI工具使用起来</span></a>
+                <div class="logos-box">
+                    <p>or get in touch with me via e-mail <a
+                            href="mailto:jaka@conversion.design">jaka@conversion.design</a>
+                </div> !
+                <div>
+                    <p>添加团队客服微信：</p>
+                    <img src="{% static 'img/newhome/qrcode.png' %}" alt="微信客服二维码" width="200px">
+                    <p>欢迎批评和提出需求。</p>
+                </div>
+
+            </div>
+
+
+        </div> -->
+
+    </div>
+
+
+
+    {% include "footer.html" %}
+    {% endblock content %}

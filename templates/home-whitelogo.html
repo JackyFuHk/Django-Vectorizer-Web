@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/cookie.js' %}"></script>
+<script>
+  var userInfo = '{{ user.username }}';
+  if (userInfo) {
+    setCookie("is_login_okey", true, days = 365, path = '/')
+  }
+</script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+
+<main>
+
+  <div class="overlay" id="overlay">
+    <div class="loader"></div>
+  </div>
+  <div class="ok-home-block">
+    <h1 class="ok-front-main-title">Whiten Your LOGO By AI Engine In One Click</h1>
+    <p class="ok-front-subtitle">Whiten your LOGO quickly and easily. Also able to change to other colors
+    </p>
+    <p class="ok-front-subtitle">Fully automatically. Using AI.</p>
+    <div class="ok-drag-image-upload" id="upload-image-btn">
+      <div class="drag-icon">
+        <img src="{% static 'img/homeImage/icons8-jpg-file-100.png' %}" alt="jpg icon" width="90px"
+          class="animated-image">
+        <img src="{% static 'img/homeImage/icons8-png-100.png' %}" alt="png icon" width="90px" class="animated-image">
+        <!-- <img src="{% static 'img/svg/svg_icon.svg' %}" alt="svg icon" width="90px" class="animated-image"> -->
+      </div>
+      <span>DRAG IMAGE HERE TO BEGIN</span>
+    </div>
+
+    <div class="other-option-upload">
+      <span>or you can</span>
+      <div class="upload-btn" id="upload-image-btn2">PICK IMAGE TO WHITE</div>
+      <!-- <span>or press</span>
+      <div class="ctl-v">
+        <div class="ctl">CTRL</div>
+        <span>+</span>
+        <div class="v">V</div>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="ok-home-block">
+    <h1 class="ok-front-main-title" id="ok-front-main-title">See It in Action</h1>
+    <div id="result"></div>
+    <div class="seeinaction-container">
+      <h3>Full Color</h3>
+      <div class="container" id="upload-image-btn3">
+        <img src="{% static 'img/homeImage/pixelopen_demo.png' %}" alt="Left Image" class="image left-image"
+          id="result-left-image">
+        <img src="{% static 'img/homeImage/pixelopen_black_and_white_demo.png' %}" alt="Right Image"
+          class="image right-image" id="result-right-image">
+        <div class="overlay-text">click to download</div>
+        <div class="splitter"></div>
+      </div>
+      <h3>White</h3>
+    </div>
+    <div class="image-row">
+      <img src="{% static 'img/homeImage/pixelopen_demo0.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo1.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo2.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo3.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo4.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo5.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo6.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo7.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo8.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo9.png' %}" alt="pixelopen black and white demo">
+      <img src="{% static 'img/homeImage/pixelopen_demo10.png' %}" alt="pixelopen black and white demo">
+    </div>
+  </div>
+
+  <div class="ok-home-block">
+    <h1 class="ok-front-main-title">How It Works</h1>
+    <div class="info-container">
+      <div class="info-row">
+        <img src="{% static 'img/homeImage/pick.png' %}" alt="pick icon" width="50%" class="info-image">
+        <h3>PICK</h3>
+        <div style="  padding: 30px;">
+          <p class="info-cell">Pick your brand logo that you want to whiten and drag and drop it
+            onto the page.</p>
+          <p class="info-cell">
+            Logo, Bitmap images, such as JPEGs and PNGs, are represented as a grid of little squares called
+            'pixels', each with its own color.</p>
+          <p class="info-cell">
+            <a id="upload-image-btn4" style="color:rgb(69, 170, 236)">Pick your logo</a> and you can preview your
+            white logo.
+          </p>
+        </div>
+      </div>
+      <div class="info-row">
+        <img src="{% static 'img/homeImage/process.png' %}" alt="process icon" width="50%" class="info-image">
+        <h3>PROCESS</h3>
+        <div style="  padding: 30px;">
+          <p class="info-cell">We analyze, process, and convert your logo from full color to a single color, with white
+            being the default option, which you can change to another color if desired.</p>
+          <p class="info-cell">
+            The resulting logo image obtained after whitening will not lose its detailed features, and can be used to
+            print, design, and more!</p>
+          <p class="info-cell"><a href="/editor/whitelogo/">Have a try</a> and you can get your white logo in one
+            click.</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <img src="{% static 'img/homeImage/download.png' %}" alt="download icon" width="50%" class="info-image">
+        <h3>DOWNLOAD</h3>
+        <div style="  padding: 30px;">
+          <p class="info-cell">Inspect a full, interactive preview of the result and download it if you like.</p>
+          <p class="info-cell">
+            We support PNG output now and SVG output is coming soon.</p>
+          <p class="info-cell"><a href="/register/">Become our user</a> and we notify you immediately when we
+            updates the SVG output.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ok-home-block" style="background-color: #d6d6d6;">
+    <h1 class="ok-front-main-title">Full Featured</h1>
+    <div class="info-container">
+      <div class="info-column">
+        <div style="padding: 30px;">
+          <p class="info-cell" style="font-weight: 500;text-align: left;">Deep Image Processing Engine:
+          </p>
+          <p class="info-cell" style="text-align: left;">
+            Drawing upon our five years of experience in this field, we have developed deep learning networks and
+            classical algorithms that collectively constitute the core functionality of PixelOpen.COM. We have
+            meticulously trained the AI networks underlying this service from the ground up, utilizing our own
+            proprietary dataset.</p>
+        </div>
+      </div>
+      <div class="info-column">
+        <div style="  padding: 30px;">
+          <p class="info-cell" style="font-weight: 500;text-align: left;">White Logo Image:</p>
+          <p class="info-cell" style="text-align: left;">
+            Our proprietary deep learning framework enables us to perform automatic processing and local optimization.
+            This is fundamentally impossible with traditional image processing representations.</p>
+        </div>
+      </div>
+      <div class="info-column">
+        <div style="  padding: 30px;">
+          <p class="info-cell" style="font-weight: 500;  text-align: left;">Full Color Fitting: </p>
+          <p class="info-cell" style="text-align: left;">
+            We strive to achieve a perfect fit for complex logo color schemes, ensuring unparalleled consistency. We
+            handle color blending and proximity with exceptional precision, ensuring that no detail is lost in the
+            process of converting the logo to white.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ok-home-block" style="background-color: #d6d6d6;">
+    <div class="info-container">
+      <div class="info-column">
+        <div style="padding: 30px;">
+          <p class="info-cell" style="font-weight: 500;text-align: left;">High Performance: </p>
+          <p class="info-cell" style="text-align: left;">
+            Nobody enjoys waiting, and we deeply respect your time. Therefore, we ensure that we are fully leveraging
+            cutting-edge GPUs for deep learning tasks, while running meticulously optimized and highly parallel
+            classical algorithms on multi-core CPUs to deliver the finest vectors in the industry to you as swiftly as
+            possible.</p>
+        </div>
+      </div>
+      <div class="info-column">
+        <div style="  padding: 30px;">
+          <p class="info-cell" style="font-weight: 500;text-align: left;">Fully Automatic:</p>
+          <p class="info-cell" style="text-align: left;">
+            No user input is necessary to generate the result.</p>
+        </div>
+      </div>
+      <div class="info-column">
+        <div style="  padding: 30px;">
+          <p class="info-cell" style="font-weight: 500;  text-align: left;">Image Types: </p>
+          <p class="info-cell" style="text-align: left;">
+            While originally designed for logos, the algorithm also works really well on scans or photos of sketches and
+            other drawn artwork, as well as bitmap images.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ok-home-block" style="background-color: #d6d6d6;">
+    <h1 class="ok-front-main-title">FAQ</h1>
+    <div class="info-column-faq">
+      <div class="two-column">
+        <p class="info-cell" style="font-weight: 500;  text-align: left;">What makes PixelOpen.COM better than the
+          competition?</p>
+        <p class="info-cell" style="text-align: left;">
+          If I had to choose one standout feature, it would undoubtedly be the AI. We've been operating in this field
+          for
+          five years, and integrating AI has been a true game-changer. It excels at uncovering details that traditional
+          methods often overlook and makes logical assumptions when pixel data is unclear. Our team fully developed the
+          Deep Learning models for this product internally, and they are trained on our exclusive dataset.</p>
+      </div>
+
+      <div class="two-column">
+        <p class="info-cell" style="font-weight: 500;  text-align: left;">Will it work on my logo?</p>
+        <p class="info-cell" style="text-align: left;">
+          Most likely, yes. However, as always, the devil is in the details. That is why we provide you with a free,
+          interactive preview so that you can see what you're going to get before you buy.</p>
+        <p class="info-cell" style="font-weight: 500;  text-align: left;">File formats?</p>
+        <p class="info-cell" style="text-align: left;">
+          We currently support JPEG, PNG as input, and produce PNG as output.
+          SVG output formats and options will be coming soon!
+          If you have a file format that you would like us to support, please let us know.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ok-home-block" style="background-color: #d6d6d6;">
+    <div class="info-column-faq">
+      <div class="two-column">
+        <p class="info-cell" style="font-weight: 500;  text-align: left;">Does this work on AI-generated bitmap images?
+        </p>
+        <p class="info-cell" style="text-align: left;">
+          Yes, indeed, they appear to be a highly popular category, and we've been delighted to witness the exceptional
+          performance of our algorithm on those images!</p>
+      </div>
+
+      <div class="two-column">
+        <p class="info-cell" style="font-weight: 500;  text-align: left;">Transparency?</p>
+        <p class="info-cell" style="text-align: left;">
+          We support full 32-bit RGBA input, so both full and partial transparency work well.</p>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+{% endblock content %}

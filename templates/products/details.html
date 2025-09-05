@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<head>
+    <link href="{% static 'css/product_details.css' %}" rel="stylesheet">
+    <link href="{% static 'css/product_list.css' %}" rel="stylesheet">
+</head>
+
+<main>
+    <script src="{% static 'js/product_details.js' %}"></script>
+    <nav aria-label="breadcrumb">
+        <ol class="ok-breadcrumb" style="background-color: #F4F0ED;">
+            <li><a href="/" style="color: black;">Home</a></li>
+            <li style="color: #ff9922;"><a href="/product/" style="color: black;">&ensp;/&ensp; Product
+                    &ensp;/&ensp;</a></li>
+            <li style="color: #ff9922;" aria-current="page"> {{ product_info.ok_product_name}}</li>
+        </ol>
+    </nav>
+    <div class="ok-details-all-container">
+        <div class="ok-details-main-container">
+            <div class="ok-details-left">
+                <!-- 要轮播 -->
+                <div class="ok-details-images">
+                    <div class="zoom-container" id="zoomContainer">
+                        <img class="ok-details-main-image" src="{{ product_info.ok_product_image.url }}"
+                            alt="{{ product_info.ok_product_image_alt }}" id="ok-main-image">
+                    </div>
+                    <!-- 左右有两个箭头切换 -->
+                    <div class="ok-details-gallery">
+                        <div class="ok-arrow-left" id="ok-arrow-left">&lt;</div>
+                        <img class="ok-gallery active" src="{{ product_info.ok_product_image.url }}"
+                            alt="{{ product_info.ok_product_image_alt }}" onclick="setActive(this)">
+                        {% for variation in variation_info %}
+                        {% if variation.ok_product_image %}
+                        <img class="ok-gallery" onclick="setActive(this)" src="{{ variation.ok_product_image.url }}"
+                            alt="{{ variation.ok_product_image_alt }}" />
+                        {% endif %}
+                        {% endfor %}
+                        <div class="ok-arrow-right" id="ok-arrow-right">&gt;</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ok-details-right">
+                <div class="ok-details-title">{{ product_info.ok_product_name }}</div>
+                <!-- <div class="price-moq">
+                    <div class="ok-productlist-price" style="color: #ff9922; font-size: 20px;">From &#163;
+                        {{ product_info.ok_product_normal_price }} for 1 pcs
+                    </div>
+                </div> -->
+
+                {% for product_tag in product_info.ok_product_category %}
+                <div class="ok-productlist-tag">
+                    {{ product_tag }}
+                </div>
+                {% endfor %}
+                {% for product_tag in product_info.ok_product_tag %}
+                <div class="ok-productlist-tag">
+                    {{ product_tag }}
+                </div>
+                {% endfor %}
+
+
+
+                <div class="ok-details-short-description">{{ product_info.ok_product_short_description }}</div>
+                <h3 style="padding: 10px;">Choose your size and quantity</h3>
+                {% for product_variation in variation_info %}
+                <div class="ok-variation-size" data-variation-name="{{ product_variation.ok_product_variation_name }}">
+                    {{ product_variation.ok_product_variation_name }}
+                </div>
+                {% endfor %}
+
+                {% for product_variation in variation_info %}
+                <table class="ok-details-tiered-price-table"
+                    id="price-table-{{ product_variation.ok_product_variation_name }}"
+                    style="{% if forloop.counter == 1 %} display:table; {% else %} display:none; {% endif %}">
+                    <thead>
+                        <tr>
+                            <th>Quantity</th>
+                            <th style="display:flex; flex-wrap: nowrap;">Price for 1 pcs<div id="ok-save-money">0%
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in product_variation.ok_product_tiered_price.items %}
+                        <tr {% if forloop.first %}class="selected" {% endif %}>
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                {% endfor %}
+                <div style="display: flex; align-items: center;  padding: 5px; width: 60%;">
+                    <p id="ok-total-price"></p>
+                    <p>VAT EXCLUDE</p>
+                </div>
+                <button class="ok-add-to-cart">
+                    Add to Cart
+                </button>
+
+
+                <div class="countdown-container">
+                    <h4>Order in the next:</h4>
+                    <div class="countdown">
+                        <span id="hours">00</span>H
+                        <span id="minutes">00</span>M
+                        <span id="seconds">00</span>S
+                    </div>
+                    <h4 style="margin-top: 10px;">Got this by: <span id="expiryDate"></span></h4>
+                </div>
+                <div class="ok-summery-info-table">
+                </div>
+                <div class="ok-need-help">
+                    <h5>Need help? Let's get in touch.</h5>
+                    <p>Our Product Experts are here to assist you with your order free of charge. -></p>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- 画一根黑线 -->
+
+        <div class="gray-line"></div>
+        <div style="display: flex;">
+            <div class="long-infomation">
+                <p>{{ product_info.ok_product_long_description }}</p>
+            </div>
+            <div class="detail-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Infomation</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123</td>
+                            <td>123456</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="ok-product-comment">
+
+        </div>
+
+        <div class="ok-productlist-block">
+            {% for product in related_product %}
+            <div class="ok-productlist-container" id="{{ product.ok_product_category }}">
+                <a href="/product/{{ product.ok_product_slug }}/">
+                    <div>
+                        {% if product.ok_product_image.url %}
+                        <img class="ok-productlist-image" src="{{ product.ok_product_image.url }}"
+                            alt="{{product.ok_product_image_alt}}" id="{{ product.id }}" />
+                        {%endif %}
+                    </div>
+                </a>
+                <div class="ok-productlist-gallery" id="{{ product.id }}">
+                    <img class="ok-productlist-gallery-image" src="{{ product.ok_product_image.url }}"
+                        alt="{{product.ok_product_image_alt}}" />
+                    {% for product_variation in product_gallery %}
+                    {% if product_variation.id == product.id and product_variation.gallery.url %}
+                    <img class="ok-productlist-gallery-image" src="{{ product_variation.gallery.url }}"
+                        alt="{{product_variation.gallery_alt}}" />
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                <a href="{{ product.ok_product_slug }}">
+                    <div class="ok-productlist-title">{{ product.ok_product_name }}</div>
+                </a>
+                <div class="price-moq">
+                    <div class="ok-productlist-price">From &#163; {{ product.ok_product_normal_price }}/unit |
+                    </div>
+                    <div class="ok-productlist-price"> &ensp;MOQ: {{ product.ok_product_moq }}</div>
+                </div>
+
+                <div class="ok-productlist-tag">
+                    {{ product.ok_product_material }}
+                </div>
+
+                {% for product_tag in product.ok_product_tag %}
+                <div class="ok-productlist-tag">
+                    {{ product_tag }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+    </div>
+</main>
+
+{% endblock content %}
